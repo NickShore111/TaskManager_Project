@@ -1,12 +1,14 @@
 from django.db import models
 from django.db.models.deletion import DO_NOTHING
+from .validators import validate_employee_number
 
 # Create your models here.
 
 
 class Employee(models.Model):
+    position = models.ForeignKey('Position', on_delete=DO_NOTHING)
     emp_num = models.IntegerField(
-        name="Employee #", unique=True, help_text="4 number pin")
+        name="Employee #", unique=True, help_text="4 number pin", validators=[validate_employee_number])
     username = models.CharField(max_length=30)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
@@ -14,7 +16,6 @@ class Employee(models.Model):
     phone_number = models.CharField(max_length=10)
     start_date = models.DateField()
     created_at = models.DateField(auto_now_add=True)
-    position = models.ForeignKey('Position', on_delete=DO_NOTHING)
 
     def __str__(self):
         return self.first_name, self.last_name

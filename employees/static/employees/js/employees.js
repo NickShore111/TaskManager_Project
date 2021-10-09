@@ -1,4 +1,6 @@
-
-$("#id_start_date").datepicker({
-    altFormat: "yy-mm-dd"
+$(function() {
+    $("#id_start_date").datepicker({
+    altFormat: "yy-mm-dd",
+    });
 });
+
