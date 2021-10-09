@@ -1,0 +1,18 @@
+{% extends 'dashboard/base.html' %}
+{% block title%}Calendar Home{% endblock %}
+{% load static %}
+{% block styling %}
+<link rel="stylesheet" href="{% static 'events/events.css' %}" type="text/css" media="screen">
+<!-- <script src="{% static 'events/calendar.js' %}" type="text/javascript"></script> -->
+{% endblock %}
+{% block content %}
+    <div class="tab-box">
+        <a href={{ previous_month }} class="prev_tab" id="prev_month">
+            Previous month
+        </a>
+        <a href={{ next_month }} class="next_tab" id="next_month">
+            Next month
+        </a>
+    </div>
+{{ calendar }}
+{% endblock %}

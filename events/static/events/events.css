@@ -1,0 +1,17 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+.month {
+  font-size: x-large;
+}
+td,
+th {
+  font-size: 11px;
+  line-height: 13px;
+  border: 1px solid grey;
+  vertical-align: top;
+  padding: 5px;
+  /* font-family: "Lucida Grande", Verdana, Arial, sans-serif; */
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}

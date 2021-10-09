@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <title>{% block title %}TaskMaster Home{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboard/css/main.css' %}" type="text/css" media="screen">
+    {% block styling %}{% endblock %}
+
+</head>
+<body>
+    <div class="container">
+        <section class="section-tabs">
+            <h1 class="tab"><a href="/taskmaster/events/">Calendar</a></h1>
+            <h1 class="tab"><a href="/taskmaster/employees/">Employees</a></h1>
+            <h1 class="tab"><a href="/taskmaster/reviews/">Reviews</a></h1>
+            <h1 class="tab"><a href="/taskmaster/tasks/">TaskManager</a></h1>
+            <h1 class="tab"><a href="/taskmaster/schedules/">Schedules</a></h1>
+        </section>
+        <section class="employee-id">
+            <div class="emp-img">
+                <div id="img">Img</div>
+                <a href="" id="change-img">Change Image</a>
+            </div>
+            <div class="emp-name">
+                <h2>Employee Name</h2>
+            <button type="submit" action="#">Logout</button>
+            </div>
+        </section>
+        <section class="qotd">
+            <h2>Today's Inspiration</h2>
+            <h3>{{ quote.text }}</h3>
+            <p>{{ quote.author }}</p>
+        </section>
+        <section class="schedule-table">
+            <h2>Today's Schedule</h2>
+            <table>
+                <tr>
+                    <th>In</th>
+                    <th>Out</th>
+                    <th>Name</th>
+                    <th>Role</th>
+                </tr>
+                <tr>
+                    <td>5:00</td>
+                    <td>5:00</td>
+                    <td>Joaquin Pheonix</td>
+                    <td>Role</td>
+                </tr>
+            </table>
+        </section>
+        <main>
+            {% block content%}{% endblock %}
+        </main>
+        <section class="task-list">
+            <h2>Today's Assignments</h2>
+        </section>
+        <section class="weekly-todo">
+            <h3 class="day">Sunday</h3>
+            <h3 class="day">Monday</h3>
+            <h3 class="day">Tuesday</h3>
+            <h3 class="day">Wednesday</h3>
+            <h3 class="day">Thursday</h3>
+            <h3 class="day">Friday</h3>
+            <h3 class="day">Saturday</h3>
+        </section>
+    </div>
+</body>
+</html>

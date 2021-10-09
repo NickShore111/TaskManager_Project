@@ -1,0 +1,24 @@
+* {
+  margin: 5px;
+}
+/* body {
+    display: flex;
+  } */
+.info_box {
+  padding: 10px;
+  border: 1px solid grey;
+  width: 300px;
+  margin: auto;
+  margin-top: 200px;
+}
+.title {
+  margin: auto;
+  text-align: center;
+  background-color: aqua;
+}
+button:hover {
+  cursor: pointer;
+}
+label {
+  display: block;
+}
