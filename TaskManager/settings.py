@@ -33,6 +33,7 @@ INTERNAL_IPS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'taskEvents',
     'reviews',
     'events',
     'employees',
