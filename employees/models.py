@@ -7,9 +7,13 @@ from .validators import validate_employee_number
 
 
 class Employee(models.Model):
-    position = models.ForeignKey('Position', on_delete=DO_NOTHING)
+    position = models.ForeignKey("Position", on_delete=DO_NOTHING)
     emp_num = models.CharField(
-        max_length=4, name="Employee #", unique=True, help_text="4 digit pin", validators=[validate_employee_number])
+        max_length=4,
+        unique=True,
+        help_text="4 digit pin",
+        validators=[validate_employee_number],
+    )
     username = models.CharField(max_length=30)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
@@ -24,27 +28,27 @@ class Employee(models.Model):
 
 class Position(models.Model):
     TITLES = (
-        ('1', 'Manager'),
-        ('2', 'Assistant Manager'),
-        ('3', 'Supervisor'),
-        ('4', 'Server'),
-        ('5', 'Busser'),
-        ('6', 'Bartender'),
-        ('7', 'Expo'),
-        ('8', 'Host'),
-        ('9', 'Barback'),
-        ('20', 'Chef'),
-        ('21', 'Sous Chef'),
-        ('22', 'Pantry'),
-        ('23', 'Line Cook'),
-        ('24', 'Grill Cook'),
-        ('25', 'Prep Cook'),
-        ('26', 'Fry Cook'),
-        ('27', 'Dishwasher'),
+        ("1", "Manager"),
+        ("2", "Assistant Manager"),
+        ("3", "Supervisor"),
+        ("4", "Server"),
+        ("5", "Busser"),
+        ("6", "Bartender"),
+        ("7", "Expo"),
+        ("8", "Host"),
+        ("9", "Barback"),
+        ("20", "Chef"),
+        ("21", "Sous Chef"),
+        ("22", "Pantry"),
+        ("23", "Line Cook"),
+        ("24", "Grill Cook"),
+        ("25", "Prep Cook"),
+        ("26", "Fry Cook"),
+        ("27", "Dishwasher"),
     )
     title = models.IntegerField(choices=TITLES)
-    location = models.ForeignKey('Department', on_delete=DO_NOTHING)
+    location = models.ForeignKey("Department", on_delete=DO_NOTHING)
 
 
 class Department(models.Model):
-    department = models.TextChoices('Locations', 'FoH BoH')
+    department = models.TextChoices("Locations", "FoH BoH")

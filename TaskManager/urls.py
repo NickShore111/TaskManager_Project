@@ -18,14 +18,19 @@ import debug_toolbar
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('__debug__/', include(debug_toolbar.urls)),
-    path('taskmanager/', include([
-        path('dashboard/', include('dashboard.urls')),
-        # path('tasks/', include('tasks.urls')),
-        # path('schedules/', include('schedules.urls')),
-        path('reviews/', include('reviews.urls')),
-        path('employees/', include('employees.urls')),
-        path('events/', include('events.urls')),
-    ])),
+    path("admin/", admin.site.urls),
+    path("__debug__/", include(debug_toolbar.urls)),
+    path(
+        "taskmanager/",
+        include(
+            [
+                path("dashboard/", include("dashboard.urls", namespace="dashboard")),
+                # path('tasks/', include('tasks.urls')),
+                # path('schedules/', include('schedules.urls')),
+                path("reviews/", include("reviews.urls", namespace="reviews")),
+                path("employees/", include("employees.urls", namespace="employees")),
+                path("events/", include("events.urls", namespace="events")),
+            ]
+        ),
+    ),
 ]
