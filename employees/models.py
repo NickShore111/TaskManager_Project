@@ -7,26 +7,6 @@ from .validators import validate_employee_number
 
 
 class Employee(models.Model):
-    position = models.ForeignKey("Position", on_delete=DO_NOTHING)
-    emp_num = models.CharField(
-        max_length=4,
-        unique=True,
-        help_text="4 digit pin",
-        validators=[validate_employee_number],
-    )
-    username = models.CharField(max_length=30)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    email = models.EmailField(max_length=50)
-    phone_number = models.CharField(max_length=10)
-    start_date = models.DateField()
-    created_at = models.DateField(auto_now_add=True)
-
-    def __str__(self):
-        return self.first_name, self.last_name
-
-
-class Position(models.Model):
     TITLES = (
         ("1", "Manager"),
         ("2", "Assistant Manager"),
@@ -46,9 +26,26 @@ class Position(models.Model):
         ("26", "Fry Cook"),
         ("27", "Dishwasher"),
     )
-    title = models.IntegerField(choices=TITLES)
-    location = models.ForeignKey("Department", on_delete=DO_NOTHING)
+    position = models.CharField(choices=TITLES, max_length=20)
+    emp_num = models.CharField(
+        max_length=4,
+        unique=True,
+        help_text="4 digit pin",
+        validators=[validate_employee_number],
+    )
+    username = models.CharField(max_length=30)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    email = models.EmailField(max_length=50)
+    phone_number = models.CharField(max_length=10)
+    start_date = models.DateField()
+    created_at = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.first_name, self.last_name
 
 
 class Department(models.Model):
-    department = models.TextChoices("Locations", "FoH BoH")
+    employee = models.ForeignKey(Employee, on_delete=DO_NOTHING, default="99")
+    LocationType = models.TextChoices("Location", "FoH BoH")
+    location = models.CharField(blank=True, choices=LocationType.choices, max_length=20)

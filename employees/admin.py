@@ -11,13 +11,6 @@ class EmployeeAdmin(admin.ModelAdmin):
 admin.site.register(Employee, EmployeeAdmin)
 
 
-class PositionAdmin(admin.ModelAdmin):
-    pass
-
-
-admin.site.register(Position, PositionAdmin)
-
-
 class DepartmentAdmin(admin.ModelAdmin):
     pass
 

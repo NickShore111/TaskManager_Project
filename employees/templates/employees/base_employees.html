@@ -16,7 +16,7 @@
     </div>
 <div class="content">
     <div class="newForm">
-        <form action="create/" method="POST">
+        <form action="{% url 'employees:index' %}" method="POST">
             <h3 class="box_title">New Employee Form</h3>
             {% csrf_token %}
             {{ positionForm }}
