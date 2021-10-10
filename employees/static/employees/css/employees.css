@@ -1,6 +1,6 @@
 .content {
   margin: auto;
-  margin-top: 4rem;
+  margin-top: 2rem;
   display: flex;
   justify-content: space-evenly;
 }
@@ -21,8 +21,9 @@
 button {
   margin: 10px;
   background-color: #4caf50; /* Green */
+  background: linear-gradient(to bottom, ##99ff99 0%, ##33cc33 100%)
   border: 2px solid black;
-  box-shadow: 5px 10px;
+  box-shadow: 5px 10px 10px grey;
   border-radius: 10px;
   color: white;
   padding: 5px 8px;
@@ -37,4 +38,17 @@ button:hover {
 label {
   margin-top: 5px;
   display: block;
+}
+.helptext {
+  font-size: 8pt;
+  font-weight: normal;
+}
+.response-msg {
+  font-size: larger;
+}
+#error {
+  color: red;
+}
+#success {
+  color: blue;
 }

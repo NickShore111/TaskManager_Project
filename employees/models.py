@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.deletion import DO_NOTHING
+from django.forms import widgets
 from .validators import validate_employee_number
 
 # Create your models here.
@@ -7,8 +8,8 @@ from .validators import validate_employee_number
 
 class Employee(models.Model):
     position = models.ForeignKey('Position', on_delete=DO_NOTHING)
-    emp_num = models.IntegerField(
-        name="Employee #", unique=True, help_text="4 number pin", validators=[validate_employee_number])
+    emp_num = models.CharField(
+        max_length=4, name="Employee #", unique=True, help_text="4 digit pin", validators=[validate_employee_number])
     username = models.CharField(max_length=30)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
