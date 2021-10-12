@@ -1,0 +1,50 @@
+{% extends 'dashboard/base.html' %}
+{% block title%}View Employee{% endblock %}
+{% load static %}
+{% block styling %}
+<link rel="stylesheet" href="{% static 'employees/css/editEmployees.css' %}" type="text/css" media="screen">
+<script src="{% static 'employees/js/editEmployees.js' %}" type="text/javascript"></script>
+{% endblock %}
+{% block content %}
+    <div class="messages">
+        {% if messages %}
+        {% for message in messages %}
+        <li{% if message.tags %} class="response-msg" id="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        {% endif %}
+    </div>
+<div class="content">
+    <div class="newForm">
+        <form action="{% url 'employees:index' %}" method="POST">
+            <h3 class="box_title">New Employee Form</h3>
+            {% csrf_token %}
+            {{ employeeForm }}<hr>
+            <button type="submit">Create</button>
+        </form>
+    </div>
+    <div class="viewForm">
+        <h3 class="box_title">View/Edit Employee Data</h3>
+        <label for="selectEmployee">Select Employee:</label>
+        <form action="display/" method="GET">
+            {% csrf_token %}
+            <select name="employeeID" id="employeeSelect">
+                    <option value="">---------</option>
+                {% for employee in employeeList %}
+                    <option value="{{ employee.pk }}">{{ employee.first_name|capfirst }} {{ employee.last_name|capfirst }}</option>
+                {% endfor %}
+            </select>
+        </form>
+        <div id="display_employee_info">
+        {% if updateEmployeeForm %}
+            <form action="update" method="POST">
+            {% csrf_token %}
+            {{ updateEmployeeForm }}<hr>
+            <button type="submit">Update</button>
+        </form>
+        {% endif %}
+
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

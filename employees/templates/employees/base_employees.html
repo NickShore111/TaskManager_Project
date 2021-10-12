@@ -1,44 +1,40 @@
-{% extends 'dashboard/base.html' %}
-{% block title%}TaskManager Employees{% endblock %}
-{% load static %}
-{% block styling %}
-<link rel="stylesheet" href="{% static 'employees/css/employees.css' %}" type="text/css" media="screen">
-<script src="{% static 'employees/js/employees.js' %}" type="text/javascript"></script>
-{% endblock %}
-{% block content %}
-    <div class="messages">
-        <h2 class="response-msg">Some sample message for vlidation response</h2>
-        {% if messages %}
-        {% for message in messages %}
-        <li{% if message.tags %} class="response-msg" id="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-        {% endif %}
-    </div>
+{% extends 'dashboard/base.html' %} {% block title%}Employees{% endblock %}
+{%load static %} {% block styling %}
+<link
+  rel="stylesheet"
+  href="{% static 'employees/css/base_employees.css' %}"
+  type="text/css"
+  media="screen"
+/>
+<script
+  src="{% static 'employees/js/base_employees.js' %}"
+  type="text/javascript"
+></script>
+{% endblock %} {% block content %}
 <div class="content">
-    <div class="newForm">
-        <form action="{% url 'employees:index' %}" method="POST">
-            <h3 class="box_title">New Employee Form</h3>
-            {% csrf_token %}
-            {{ employeeForm }}<hr>
-            <button type="submit">Create</button>
-        </form>
-    </div>
-    <div class="viewForm">
-        <h3 class="box_title">View/Edit Employee Data</h3>
-        <label for="selectEmployee">Select Employee:</label>
-        <form action="display/" method="GET">
-            {% csrf_token %}
-            <select name="employeeID" id="employeeSelect">
-                    <option value="">---------</option>
-                {% for employee in employeeList %}
-                    <option value="{{ employee.emp_num }}">{{ employee.first_name|capfirst }} {{ employee.last_name|capfirst }}</option>
-                {% endfor %}
-            </select>
-        </form>
-        <div id="display_employee_info">
-            <p>Some sample text</p>
-        </div>
-        
-    </div>
+  <table id="employee-table">
+    <thead>
+      <th>Employee #</th>
+      <th>Username</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Start Date</th>
+      <th>Action</th>
+    </thead>
+    {% for employee in employeeList %}
+    <tr>
+      <td>{{ employee.emp_num }}</td>
+      <td>{{ employee.username|capfirst }}</td>
+      <td>{{ employee.first_name|capfirst }}</td>
+      <td>{{ employee.last_name|capfirst }}</td>
+      <td>{{ employee.email }}</td>
+      <td>{{ employee.phone_number }}</td>
+      <td>{{ employee.start_date }}</td>
+      <td id="action-link"><a href="edit/{{ employee.pk }}">Edit Info</a></td>
+    </tr>
+    {% endfor %}
+  </table>
 </div>
 {% endblock %}

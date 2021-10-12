@@ -1,5 +1,5 @@
-<div class="display">
-  {{ displayEmployeeForm }}
+<form action="update" method="POST">
+  {% csrf_token %} {{ displayEmployeeForm }}
   <hr />
   <button type="submit">Update</button>
-</div>
+</form>

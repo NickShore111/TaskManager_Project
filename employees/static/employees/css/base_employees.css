@@ -1,0 +1,23 @@
+.content {
+  width: auto;
+  height: 550px;
+  margin: auto;
+  overflow-y: scroll;
+}
+#employee-table {
+  width: 990px;
+}
+th {
+  font-size: larger;
+  border: 1px black solid;
+}
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  height: 20px;
+  border-bottom: 2px black solid;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
