@@ -19,7 +19,6 @@
         <form action="{% url 'employees:index' %}" method="POST">
             <h3 class="box_title">New Employee Form</h3>
             {% csrf_token %}
-            {{ positionForm }}
             {{ employeeForm }}<hr>
             <button type="submit">Create</button>
         </form>
@@ -27,17 +26,19 @@
     <div class="viewForm">
         <h3 class="box_title">View/Edit Employee Data</h3>
         <label for="selectEmployee">Select Employee:</label>
-        <select name="employee">
-            {% for employee in employeeList %}
-                <option value="{{ employee.login_id }}">{{ employee.first_name }} {{ employee.last_name }}</option>
-            {% endfor %}
-        </select>
-        <label for="title">Title:</label>
-        <label for="first_name">First Name:</label>
-        <label for="last_name">Last Name:</label>
-        <label for="email">Email:</label>
-        <label for="phone_number">Phone Number:</label>
-        <label for="start_date">Start date:</label>
+        <form action="display/" method="GET">
+            {% csrf_token %}
+            <select name="employeeID" id="employeeSelect">
+                    <option value="">---------</option>
+                {% for employee in employeeList %}
+                    <option value="{{ employee.emp_num }}">{{ employee.first_name|capfirst }} {{ employee.last_name|capfirst }}</option>
+                {% endfor %}
+            </select>
+        </form>
+        <div id="display_employee_info">
+            <p>Some sample text</p>
+        </div>
+        
     </div>
 </div>
 {% endblock %}

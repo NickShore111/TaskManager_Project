@@ -28,6 +28,7 @@ class Employee(models.Model):
     )
     position = models.CharField(choices=TITLES, max_length=20)
     emp_num = models.CharField(
+        verbose_name="Employee #",
         max_length=4,
         unique=True,
         help_text="4 digit pin",

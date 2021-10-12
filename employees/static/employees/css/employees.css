@@ -21,7 +21,7 @@
 button {
   margin: 10px;
   background-color: #4caf50; /* Green */
-  background: linear-gradient(to bottom, ##99ff99 0%, ##33cc33 100%)
+  /* background: linear-gradient(to bottom, ##99ff99 0%, ##33cc33 100%) */
   border: 2px solid black;
   box-shadow: 5px 10px 10px grey;
   border-radius: 10px;
