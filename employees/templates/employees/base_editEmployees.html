@@ -8,14 +8,21 @@
 {% block content %}
     <div class="messages">
         {% if messages %}
-        {% for message in messages %}
-        <li{% if message.tags %} class="response-msg" id="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
+            {% for message in messages %}
+                <h3 {% if message.tags %} class="response-msg" id="{{ message.tags }}"{% endif %}>{{ message }}</h3>
+            {% endfor %}
+        {% endif %}
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <h4>{{error}}</h4>
+                {% endfor %}
+            {% endfor %}
         {% endif %}
     </div>
 <div class="content">
     <div class="editForm">
-        <form action="{% url 'employees:edit' %}" method="POST">
+        <form action="{% url 'employees:update' %}" method="POST">
             <h3 class="box_title">Edit Employee Data</h3>
             {% csrf_token %}
             {{ editEmployeeForm }}<hr>

@@ -1,11 +1,10 @@
-from django.forms import ModelForm, IntegerField
-from django.forms.fields import TypedChoiceField
+from django.forms import ModelForm
 from employees.models import Employee, Department
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 
 
-# Create the form class.
+# Create the form class. 
 
 
 class EmployeeForm(ModelForm):

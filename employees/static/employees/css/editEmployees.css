@@ -9,22 +9,15 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   text-align: center;
-  background-color: aqua;
   font-size: x-large;
-}
-.newForm,
-.viewForm {
-  border: 2px solid black;
-  border-radius: 10px;
-  width: 300px;
 }
 button {
   margin: 10px;
   background-color: #4caf50; /* Green */
   /* background: linear-gradient(to bottom, ##99ff99 0%, ##33cc33 100%) */
   border: 2px solid black;
-  box-shadow: 5px 10px 10px grey;
-  border-radius: 10px;
+  box-shadow: 5px 5px 10px grey;
+  border-radius: 5px;
   color: white;
   padding: 5px 8px;
   text-align: center;
@@ -51,4 +44,7 @@ label {
 }
 #success {
   color: blue;
+}
+li {
+  list-style: none;
 }

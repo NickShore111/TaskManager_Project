@@ -1,6 +1,5 @@
 from django.db import models
 from django.db.models.deletion import DO_NOTHING
-from django.forms import widgets
 from .validators import validate_employee_number
 
 # Create your models here.
@@ -30,7 +29,7 @@ class Employee(models.Model):
     emp_num = models.CharField(
         verbose_name="Employee #",
         max_length=4,
-        unique=True,
+        # unique=True,
         help_text="4 digit pin",
         validators=[validate_employee_number],
     )
