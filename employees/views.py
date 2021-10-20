@@ -21,25 +21,54 @@ def index(request):
 
 
 def edit(request, employeePK=0):
+    print(employeePK)
+    empPk = employeePK
+    print(empPk)
     if request.method == "GET":
-        employee = Employee.objects.get(pk=employeePK)
+        employee = Employee.objects.get(pk=empPk)
+        print("employee: ", employee)
         editEmployeeForm = EmployeeForm(instance=employee)
-        return render(request, "employees/base_editEmployees.html", {"editEmployeeForm": editEmployeeForm})
+        context = {"editEmployeeForm": editEmployeeForm,
+                    "employee": employee}
+        return render(request, "employees/base_editEmployees.html", context)
     elif request.method == "POST":
+        empPk = employeePK
         employeeForm = EmployeeForm(request.POST)
         if employeeForm.is_valid():
-            employee = Employee.objects.get(pk=employeePK)
+
+            employee = Employee.objects.get(pk=empPk)
             editEmployee = EmployeeForm(request.POST, instance=employee)
             editEmployee.save()
             messages.success(request, "Employee Data Updated Successfully")
-            context = {"editEmployeeForm": employeeForm}
+            # context = {"editEmployeeForm": employeeForm,
+            #             "employee": employee}
 
-            return redirect("edit/"+employeePK, context)
+            return redirect("emloyees:index")
         else:
             messages.error(request, "Updated Employee Data Returned Invalid")
-            context = {"editEmployeeForm": employeeForm}
+            context = {"editEmployeeForm": employeeForm,
+                        "employee": empPk}
             return redirect("edit/"+employeePK, context)
 
+def update(request, employeePK):
+    empPk = employeePK
+    employeeForm = EmployeeForm(request.POST)
+    if employeeForm.is_valid():
+
+        employee = Employee.objects.get(pk=empPk)
+        editEmployee = EmployeeForm(request.POST, instance=employee)
+        editEmployee.save()
+        messages.success(request, "Employee Data Updated Successfully")
+        # context = {"editEmployeeForm": employeeForm,
+        #             "employee": employee}
+
+        return redirect("emloyees:index")
+    else:
+        messages.error(request, "Updated Employee Data Returned Invalid")
+        context = {"editEmployeeForm": employeeForm,
+                    "employee": empPk}
+        return redirect("edit/"+employeePK, context)
+    pass
 
 # def edit(request, employeePK=""):
 #     if request.method == "GET":

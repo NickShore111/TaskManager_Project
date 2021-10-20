@@ -12,6 +12,11 @@
 ></script>
 {% endblock %} {% block content %}
 <div class="content">
+  {% if messages %}
+    {% for message in messages %}
+        <h3 {% if message.tags %} class="response-msg" id="{{ message.tags }}"{% endif %}>{{ message }}</h3>
+    {% endfor %}
+  {% endif %}
   <table id="employee-table">
     <thead>
       <th>Employee #</th>
