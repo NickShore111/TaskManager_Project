@@ -17,10 +17,10 @@
             <h3 class="box_title">Edit Employee Data</h3>
             {% csrf_token %}
             {{ editEmployeeForm }}<hr>
-            <a href="edit/{{ employee.pk }}" class="btn btn-secondary">Reset</button>
+                <a href="edit/{{ employee.pk }}" class="button btn btn-secondary">Reset</a></button>
+            </form>
             <button type="submit" class="btn btn-success">Update</button>
         </form>
-
     </div>
     <div class="delete-btn">
         <form action="delete/{{ employee.pk }}" method="POST">

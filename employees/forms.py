@@ -16,12 +16,12 @@ class EmployeeForm(ModelForm):
     def clean_emp_num(self):
         emp_num = self.cleaned_data.get("emp_num")
         if len(emp_num) < 4:
-            raise ValidationError(_("Invalid Employee ID Number."))
+            raise ValidationError(_("Invalid ID Number."))
         else:
             try:
                 emp_num = int(emp_num)
             except ValueError:
-                raise ValidationError(_("Invalid Employee ID Number."))
+                raise ValidationError(_("Invalid ID Number."))
         return emp_num
 
 
