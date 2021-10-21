@@ -11,23 +11,7 @@
   text-align: center;
   font-size: x-large;
 }
-button {
-  margin: 10px;
-  background-color: #4caf50; /* Green */
-  /* background: linear-gradient(to bottom, ##99ff99 0%, ##33cc33 100%) */
-  border: 2px solid black;
-  box-shadow: 5px 5px 10px grey;
-  border-radius: 5px;
-  color: white;
-  padding: 5px 8px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-}
-button:hover {
-  cursor: pointer;
-}
+
 label {
   margin-top: 5px;
   display: block;
@@ -39,12 +23,7 @@ label {
 .response-msg {
   font-size: larger;
 }
-#error {
-  color: red;
-}
-#success {
-  color: blue;
-}
+
 li {
   list-style: none;
 }
