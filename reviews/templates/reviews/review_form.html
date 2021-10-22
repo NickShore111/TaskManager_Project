@@ -1,0 +1,17 @@
+{% extends 'dashboard/base.html' %}
+{% block title%}Reviews{% endblock %}
+{% load static %}
+{% block styling %}
+<link rel="stylesheet" href="{% static 'reviews/css/base_reviews.css' %}" type="text/css" media="screen">
+{% endblock %}
+{% block content %}
+<div class="content">
+    <div class="reviewForm">
+        <form method="POST">{% csrf_token %}
+            <h3 class="box_title">Staff Review</h3>
+            {{ form.as_p }}
+            <input class="btn btn-success" type="submit" value="Save">
+        </form>
+    </div>
+</div>
+{% endblock %}

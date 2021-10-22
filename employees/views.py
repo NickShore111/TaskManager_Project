@@ -22,7 +22,7 @@ def index(request):
 def edit(request, employeePK=0):
     empPk = employeePK
     employee = Employee.objects.get(pk=empPk)
-    print("employee: ", employee)
+    # print("employee: ", employee)
     editEmployeeForm = EmployeeForm(instance=employee)
     context = {"editEmployeeForm": editEmployeeForm,
                 "employee": employee}

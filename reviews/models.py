@@ -1,8 +1,7 @@
 from django.db import models
 from employees.models import Employee
 from django.db.models.deletion import DO_NOTHING
-from django.core.validators import MaxValueValidator
-
+from django.urls import reverse
 # Create your models here.
 class Review(models.Model):
 
@@ -24,3 +23,5 @@ class Review(models.Model):
     performance = models.IntegerField(choices=Rating.choices)
     created_at = models.DateField(auto_now_add=True)
 
+    def get_absolute_url(self):
+        return reverse('reviews:detail', kwargs={'pk': self.pk})

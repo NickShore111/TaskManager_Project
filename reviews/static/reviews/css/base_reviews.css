@@ -1,0 +1,19 @@
+
+.content {
+    display: flex;
+}
+.reviewForm {
+    width: 400px;
+    border: 2px solid black;
+    margin: auto;
+    margin-top: 2rem;
+}
+p {
+    margin: 10px;
+}
+.box_title {
+    font-size: x-large;
+}
+.btn {
+    margin-bottom: 10px;
+}

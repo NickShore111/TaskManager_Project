@@ -1,0 +1,10 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+    <h2>Reviews</h2>
+    <ul>
+        {% for review in object_list %}
+            <li>{{ review.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

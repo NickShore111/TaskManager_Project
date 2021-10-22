@@ -8,6 +8,7 @@ from django.core.exceptions import ValidationError
 
 
 class EmployeeForm(ModelForm):
+    error_css_class = "error"
     class Meta:
         model = Employee
         fields = "__all__"
