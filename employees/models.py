@@ -46,6 +46,7 @@ class Employee(models.Model):
 
 
 
+
 class Department(models.Model):
     employee = models.ForeignKey(Employee, on_delete=DO_NOTHING, default="99")
     LocationType = models.TextChoices("Location", "FoH BoH")

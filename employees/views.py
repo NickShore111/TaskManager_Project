@@ -44,4 +44,24 @@ def update(request, employeePK):
         print(empPk)
         return render(request, "employees/base_editEmployees.html", context)
 
+def delete(request, employeePK):
+    empPk = employeePK
+    Employee.objects.get(pk= empPk).delete()
+    return redirect("employees:index")
 
+def create(request):
+    if request.method == "GET":
+        employeeForm = EmployeeForm()
+        context = {"employeeForm": employeeForm}
+        return render(request, "employees/base_createEmployee.html", context)
+    elif request.method == "POST":
+        employeeForm = EmployeeForm(request.POST)
+        if employeeForm.is_valid():
+            employeeForm.save()
+            messages.success(request, "New Employee Successfully Created")
+            return redirect("employees:create")
+        else:
+            employeeForm = EmployeeForm(request.POST)
+            messages.error(request, "Employee Data Not Valid")
+            context = {"employeeForm": employeeForm}
+            return render(request, "employees/base_createEmployee.html", context)

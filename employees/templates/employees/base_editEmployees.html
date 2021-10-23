@@ -8,22 +8,22 @@
 {% block content %}
 <div class="content">
     <div class="create-btn">
-        <form action="create/" method="GET">
-            <button type="submit" class="btn btn-primary">Create New Employee</button>
-        </form>
+        <a href="create/" class="button btn btn-primary">Create New Employee</a></button>
     </div>
     <div class="editForm">
         <form action="update/{{ employee.pk }}" method="POST">
             <h3 class="box_title">Edit Employee Data</h3>
             {% csrf_token %}
             {{ editEmployeeForm }}<hr>
-                <a href="edit/{{ employee.pk }}" class="button btn btn-secondary">Reset</a></button>
-            </form>
-            <button type="submit" class="btn btn-success">Update</button>
+                <span>
+                    <a href="edit/{{ employee.pk }}" class="button btn btn-secondary">Reset</a></button>
+                    <button type="submit" class="btn btn-success">Update</button>
+                </span>
         </form>
     </div>
     <div class="delete-btn">
         <form action="delete/{{ employee.pk }}" method="POST">
+            {% csrf_token %}
             <button type="submit" class="btn btn-warning">Delete Employee</button>
         </form>
     </div>

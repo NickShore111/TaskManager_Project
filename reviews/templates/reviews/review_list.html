@@ -2,9 +2,32 @@
 
 {% block content %}
     <h2>Reviews</h2>
-    <ul>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Attendance</th>
+            <th>Grooming</th>
+            <th>Punctuality</th>
+            <th>Attire</th>
+            <th>Teamwork</th>
+            <th>Initiative</th>
+            <th>Customer Service</th>
+            <th>Performance</th>
+            <th>Average</th>
+        </tr>
         {% for review in object_list %}
-            <li>{{ review.name }}</li>
+        <tr>
+            <td>{{ review.employee_id }}</td>
+            <td>{{ review.attendance }}</td>
+            <td>{{ review.grooming }}</td>
+            <td>{{ review.punctuality }}</td>
+            <td>{{ review.attire }}</td>
+            <td>{{ review.teamwork }}</td>
+            <td>{{ review.initiative }}</td>
+            <td>{{ review.customer_service }}</td>
+            <td>{{ review.performance }}</td>
+            <td><div id="review-avg"></div></td>
+        </tr>
         {% endfor %}
-    </ul>
+    </table>
 {% endblock %}

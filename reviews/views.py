@@ -1,7 +1,6 @@
 from django.db.models import fields
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from django.shortcuts import render
 from reviews.models import Review
 from django.views.generic import ListView
 
