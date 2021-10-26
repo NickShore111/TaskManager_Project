@@ -25,12 +25,12 @@
     </thead>
     {% for employee in employeeList %}
     <tr>
-      <td>{{ employee.emp_num }}</td>
+      <td>{{ employee.login_num }}</td>
       <td>{{ employee.username|capfirst }}</td>
       <td>{{ employee.first_name|capfirst }}</td>
       <td>{{ employee.last_name|capfirst }}</td>
       <td>{{ employee.email }}</td>
-      <td>{{ employee.phone_number }}</td>
+      <td>{{ employee.phone }}</td>
       <td>{{ employee.start_date }}</td>
       <td id="action-link"><a href="edit/{{ employee.pk }}">Edit Info</a></td>
     </tr>

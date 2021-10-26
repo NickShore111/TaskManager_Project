@@ -8,11 +8,11 @@ class EmployeeAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(Employee, EmployeeAdmin)
+admin.site.register(Employees, EmployeeAdmin)
 
 
 class DepartmentAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(Department, DepartmentAdmin)
+admin.site.register(Departments, DepartmentAdmin)

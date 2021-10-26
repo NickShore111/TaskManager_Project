@@ -1,9 +1,13 @@
 from django.db import models
-from employees.models import Employee
+from employees.models import Employees
 from django.db.models.deletion import DO_NOTHING
 from django.urls import reverse
+from employees.models import Employees
+from datetime import date
 # Create your models here.
-class Review(models.Model):
+
+
+class Reviews(models.Model):
 
     class Rating(models.IntegerChoices):
         UNACCEPTABLE = 1
@@ -12,16 +16,45 @@ class Review(models.Model):
         ABOVE_AVERAGE = 4
         EXCEPTIONAL = 5
 
-    employee = models.ForeignKey(Employee, on_delete=DO_NOTHING)
-    attendance = models.IntegerField(choices=Rating.choices)
-    grooming = models.IntegerField(choices=Rating.choices)
-    punctuality = models.IntegerField(choices=Rating.choices)
-    attire = models.IntegerField(choices=Rating.choices)
-    teamwork = models.IntegerField(choices=Rating.choices)
-    initiative = models.IntegerField(choices=Rating.choices)
-    customer_service = models.IntegerField(choices=Rating.choices)
-    performance = models.IntegerField(choices=Rating.choices)
-    created_at = models.DateField(auto_now_add=True)
+    attendance = models.IntegerField(choices=Rating.choices, blank=True, null=True)
+    grooming = models.IntegerField(choices=Rating.choices, blank=True, null=True)
+    punctuality = models.IntegerField(choices=Rating.choices, blank=True, null=True)
+    attire = models.IntegerField(choices=Rating.choices, blank=True, null=True)
+    teamword = models.IntegerField(choices=Rating.choices, blank=True, null=True)
+    initiative = models.IntegerField(choices=Rating.choices, blank=True, null=True)
+    service = models.IntegerField(choices=Rating.choices, blank=True, null=True)
+    quality = models.IntegerField(choices=Rating.choices, blank=True, null=True)
+    productivity = models.IntegerField(choices=Rating.choices, blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, null=True, default=date.today)
+    employee = models.ForeignKey(Employees, models.DO_NOTHING)
+
+    class Meta:
+        db_table = 'reviews'
 
     def get_absolute_url(self):
         return reverse('reviews:detail', kwargs={'pk': self.pk})
+
+# class Review(models.Model):
+
+#     class Rating(models.IntegerChoices):
+#         UNACCEPTABLE = 1
+#         NEEDS_IMPROVEMENT = 2
+#         SATISFACTORY = 3
+#         ABOVE_AVERAGE = 4
+#         EXCEPTIONAL = 5
+
+#     employee = models.ForeignKey(Employee, on_delete=DO_NOTHING)
+#     attendance = models.IntegerField(choices=Rating.choices)
+#     grooming = models.IntegerField(choices=Rating.choices)
+#     punctuality = models.IntegerField(choices=Rating.choices)
+#     attire = models.IntegerField(choices=Rating.choices)
+#     teamwork = models.IntegerField(choices=Rating.choices)
+#     initiative = models.IntegerField(choices=Rating.choices)
+#     customer_service = models.IntegerField(choices=Rating.choices)
+#     performance = models.IntegerField(choices=Rating.choices)
+#     created_at = models.DateField(auto_now_add=True)
+
+#     def get_absolute_url(self):
+#         return reverse('reviews:detail', kwargs={'pk': self.pk})
+
+

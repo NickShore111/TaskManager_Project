@@ -7,13 +7,13 @@ from django.shortcuts import (
 )
 from django.contrib import messages
 from .forms import EmployeeForm
-from .models import Employee
+from .models import Employees
 
 # Create your views here.
 
 
 def index(request):
-    employeeList = Employee.objects.all()
+    employeeList = Employees.objects.all()
     context = {
         "employeeList": employeeList,
     }
@@ -21,7 +21,7 @@ def index(request):
 
 def edit(request, employeePK=0):
     empPk = employeePK
-    employee = Employee.objects.get(pk=empPk)
+    employee = Employees.objects.get(pk=empPk)
     # print("employee: ", employee)
     editEmployeeForm = EmployeeForm(instance=employee)
     context = {"editEmployeeForm": editEmployeeForm,
@@ -32,7 +32,7 @@ def update(request, employeePK):
     empPk = employeePK
     employeeForm = EmployeeForm(request.POST)
     if employeeForm.is_valid():
-        employee = Employee.objects.get(pk=empPk)
+        employee = Employees.objects.get(pk=empPk)
         editEmployee = EmployeeForm(request.POST, instance=employee)
         editEmployee.save()
         messages.success(request, "Employee Data Updated Successfully")
@@ -46,7 +46,7 @@ def update(request, employeePK):
 
 def delete(request, employeePK):
     empPk = employeePK
-    Employee.objects.get(pk= empPk).delete()
+    Employees.objects.get(pk= empPk).delete()
     return redirect("employees:index")
 
 def create(request):

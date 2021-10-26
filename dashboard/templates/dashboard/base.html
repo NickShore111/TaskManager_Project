@@ -20,51 +20,45 @@
       <div class="dropdown">
         <button class="dropbtn tab">TaskManager</button>
         <div class="dropdown-content">
-          <a href="/taskmanager/tasks/">View</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+          <a href="/taskmanager/tasks/">View Tasks</a>
+          <a href="#">Edit Tasks</a>
+          <a href="#">View Reminders</a>
+          <a href="#">Edit Reminders</a>
         </div>
       </div>
       <div class="dropdown">
         <button class="dropbtn tab">Employees</button>
         <div class="dropdown-content">
-          <a href="/taskmanager/employees/">View</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+          <a href="{% url 'employees:index' %}">View Employees</a>
+          <a href="{% url 'employees:create' %}">Create Employees</a>
+          <!-- <a href="{% url 'employees:delete' %}">Delete Employees</a> -->
         </div>
       </div>
       <div class="dropdown">
         <button class="dropbtn tab">Reviews</button>
         <div class="dropdown-content">
-          <a href="/taskmanager/reviews/">View</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+          <a href="/taskmanager/reviews/">View Reviews</a>
+          <a href="#">Edit Reviews</a>
+          <a href="#">Create Reviews</a>
         </div>
       </div>
       <div class="dropdown">
         <button class="dropbtn tab">Calendar</button>
         <div class="dropdown-content">
-          <a href="/taskmanager/events/">View</a>
-          <a href="#">Link 2</a>
+          <a href="/taskmanager/events/">View Events</a>
+          <a href="#">Create Events</a>
           <a href="#">Link 3</a>
         </div>
       </div>
       <div class="dropdown">
         <button class="dropbtn tab">Schedules</button>
         <div class="dropdown-content">
-          <a href="/taskmanager/schedules/">View</a>
-          <a href="#">Link 2</a>
+          <a href="/taskmanager/schedules/">View Schedules</a>
+          <a href="#">Edit Schedules</a>
           <a href="#">Link 3</a>
         </div>
       </div>
     </section>
-    <!-- <section class="section-tabs">
-      <h1 class="tab"><a href="/taskmanager/events/">Calendar</a></h1>
-      <h1 class="tab"><a href="/taskmanager/employees/">Employees</a></h1>
-      <h1 class="tab"><a href="/taskmanager/reviews/">Reviews</a></h1>
-      <h1 class="tab"><a href="/taskmanager/tasks/">TaskManager</a></h1>
-      <h1 class="tab"><a href="/taskmanager/schedules/">Schedules</a></h1>
-    </section> -->
     <section class="employee-id">
       <div class="emp-img">
         <div id="img">Img</div>

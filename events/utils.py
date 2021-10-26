@@ -1,7 +1,7 @@
 from calendar import HTMLCalendar
 from datetime import datetime as dtime, date, time
 import datetime
-from .models import Event
+from .models import Events
 
 
 class EventCalendar(HTMLCalendar):
@@ -36,7 +36,7 @@ class EventCalendar(HTMLCalendar):
         Return a formatted month as a table.
         """
 
-        events = Event.objects.filter(day__month=themonth)
+        events = Events.objects.filter(day__month=themonth)
 
         v = []
         a = v.append

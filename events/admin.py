@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.contrib import admin
-from events.models import Event
+from events.models import Events
 import datetime
 import calendar
 from django.urls import reverse
@@ -59,4 +59,4 @@ class EventAdmin(admin.ModelAdmin):
         return super(EventAdmin, self).changelist_view(request, extra_context)
 
 
-admin.site.register(Event, EventAdmin)
+admin.site.register(Events, EventAdmin)

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render, HttpResponse
-from events.models import Event
+# from events.models import Events
 import datetime
 import calendar
 from django.utils.safestring import mark_safe

@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from employees.models import Employee, Department
+from employees.models import Departments, Employees, Departments
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 
@@ -10,7 +10,7 @@ from django.core.exceptions import ValidationError
 class EmployeeForm(ModelForm):
     error_css_class = "error"
     class Meta:
-        model = Employee
+        model = Employees
         fields = "__all__"
         exclude = ["created_at"]
 
@@ -28,5 +28,5 @@ class EmployeeForm(ModelForm):
 
 class DepartmentForm(ModelForm):
     class Meta:
-        model = Department
+        model = Departments
         fields = "__all__"
