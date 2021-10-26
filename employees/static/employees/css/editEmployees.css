@@ -27,6 +27,10 @@ label {
 }
 li {
   list-style: none;
+
+}
+.errorlist {
+  color: red;
 }
 /* .button {
   font: bold 11px Arial;

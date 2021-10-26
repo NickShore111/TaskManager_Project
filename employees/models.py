@@ -37,6 +37,9 @@ class Positions(models.Model):
     updated_at = models.DateTimeField(blank=True, null=True, auto_now=True)
     department = models.ForeignKey(Departments, models.DO_NOTHING, blank=True, null=True)
 
+    def __str__(self):
+        return self.title
+
     class Meta:
         db_table = 'positions'
 
@@ -47,14 +50,13 @@ class Employees(models.Model):
         # unique=True,
         help_text="4 digit pin",
         validators=[validate_employee_number],
-        blank=True, 
-        null=True)
-    username = models.CharField(max_length=45, blank=True, null=True)
-    first_name = models.CharField(max_length=45, blank=True, null=True)
-    last_name = models.CharField(max_length=45, blank=True, null=True)
-    email = models.EmailField(max_length=45, blank=True, null=True)
-    phone = models.CharField(max_length=45, blank=True, null=True)
-    start_date = models.DateField(blank=True, null=True)
+)
+    username = models.CharField(max_length=45)
+    first_name = models.CharField(max_length=45)
+    last_name = models.CharField(max_length=45)
+    email = models.EmailField(max_length=45)
+    phone = models.CharField(max_length=45)
+    start_date = models.DateField()
     created_at = models.DateTimeField(blank=True, null=True, auto_now_add=True)
     updated_at = models.DateTimeField(blank=True, null=True, auto_now=True)
     position = models.ForeignKey('Positions', models.DO_NOTHING)

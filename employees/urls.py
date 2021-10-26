@@ -4,10 +4,10 @@ from . import views
 app_name = "employees"
 urlpatterns = [
     path("", views.index, name="index"),
-    path("edit/create/", views.create, name="create"),
-
+    path("create/", views.create, name="create"),
+    path("update/", views.update, name="update"),
+    path("update/<employeePK>", views.update, name="update"),
+    path("delete/<employeePK>", views.delete, name="delete"),
     # path("edit/<employeePK>", views.edit, name="edit"),
-    # path("edit/update/<employeePK>", views.update, name="update"),
-    # path("edit/delete/<employeePK>", views.delete, name="delete"),
 
 ]

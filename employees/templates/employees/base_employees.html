@@ -32,7 +32,7 @@
       <td>{{ employee.email }}</td>
       <td>{{ employee.phone }}</td>
       <td>{{ employee.start_date }}</td>
-      <td id="action-link"><a href="edit/{{ employee.pk }}">Edit Info</a></td>
+      <td id="action-link"><a href="{% url 'employees:update' employee.pk %}">Edit Info</a></td>
     </tr>
     {% endfor %}
   </table>
