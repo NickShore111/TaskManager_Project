@@ -25,8 +25,6 @@ urlpatterns = [
         include(
             [
                 path("dashboard/", include("dashboard.urls", namespace="dashboard")),
-                # path('taskmanager/', include('taskEvents.urls')),
-                # path('schedules/', include('schedules.urls')),
                 path("reviews/", include("reviews.urls", namespace="reviews")),
                 path("employees/", include("employees.urls", namespace="employees")),
                 path("events/", include("events.urls", namespace="events")),

@@ -10,23 +10,23 @@ from datetime import date
 class Reviews(models.Model):
 
     class Rating(models.IntegerChoices):
+        NOT_APPLICABLE = 0
         UNACCEPTABLE = 1
         NEEDS_IMPROVEMENT = 2
         SATISFACTORY = 3
         ABOVE_AVERAGE = 4
         EXCEPTIONAL = 5
-
-    attendance = models.IntegerField(choices=Rating.choices, blank=True, null=True)
-    grooming = models.IntegerField(choices=Rating.choices, blank=True, null=True)
-    punctuality = models.IntegerField(choices=Rating.choices, blank=True, null=True)
-    attire = models.IntegerField(choices=Rating.choices, blank=True, null=True)
-    teamword = models.IntegerField(choices=Rating.choices, blank=True, null=True)
-    initiative = models.IntegerField(choices=Rating.choices, blank=True, null=True)
-    service = models.IntegerField(choices=Rating.choices, blank=True, null=True)
-    quality = models.IntegerField(choices=Rating.choices, blank=True, null=True)
-    productivity = models.IntegerField(choices=Rating.choices, blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True, default=date.today)
     employee = models.ForeignKey(Employees, models.DO_NOTHING)
+    attendance = models.IntegerField(choices=Rating.choices)
+    grooming = models.IntegerField(choices=Rating.choices)
+    punctuality = models.IntegerField(choices=Rating.choices)
+    attire = models.IntegerField(choices=Rating.choices)
+    teamwork = models.IntegerField(choices=Rating.choices)
+    initiative = models.IntegerField(choices=Rating.choices)
+    service = models.IntegerField(choices=Rating.choices)
+    quality = models.IntegerField(choices=Rating.choices)
+    productivity = models.IntegerField(choices=Rating.choices)
+    created_at = models.DateField(verbose_name='Date', default=date.today)
 
     class Meta:
         db_table = 'reviews'

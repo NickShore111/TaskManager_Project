@@ -67,6 +67,5 @@ def create(request):
             messages.success(request, "New Employee Successfully Created")
             return redirect("employees:create")
         else:
-            print(employeeForm.errors)
             messages.error(request, "Employee Data Not Valid")
             return render(request, "employees/base_createEmployee.html", context)

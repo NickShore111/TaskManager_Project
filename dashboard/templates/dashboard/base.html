@@ -20,14 +20,14 @@
       <div class="dropdown">
         <button class="dropbtn tab">TaskManager</button>
         <div class="dropdown-content">
-          <a href="/taskmanager/tasks/">View Tasks</a>
+          <a href="#">View Tasks</a>
           <a href="#">Edit Tasks</a>
           <a href="#">View Reminders</a>
           <a href="#">Edit Reminders</a>
         </div>
       </div>
       <div class="dropdown">
-        <button class="dropbtn tab">Employees</button>
+        <button class="dropbtn tab">Employee Data</button>
         <div class="dropdown-content">
           <a href="{% url 'employees:index' %}">View Employees</a>
           <a href="{% url 'employees:create' %}">Create Employees</a>
@@ -35,17 +35,17 @@
         </div>
       </div>
       <div class="dropdown">
-        <button class="dropbtn tab">Reviews</button>
+        <button class="dropbtn tab">Staff Evaluations</button>
         <div class="dropdown-content">
-          <a href="/taskmanager/reviews/">View Reviews</a>
-          <a href="#">Edit Reviews</a>
-          <a href="#">Create Reviews</a>
+          <a href="{% url 'reviews:index' %}">See Reviews</a>
+          <a href="{% url 'reviews:create' %}">Create Review</a>
+          <a href="{% url 'reviews:update' %}">Edit Reviews</a>
         </div>
       </div>
       <div class="dropdown">
         <button class="dropbtn tab">Calendar</button>
         <div class="dropdown-content">
-          <a href="/taskmanager/events/">View Events</a>
+          <a href="{% url 'events:index' %}">View Events</a>
           <a href="#">Create Events</a>
           <a href="#">Link 3</a>
         </div>
@@ -53,7 +53,7 @@
       <div class="dropdown">
         <button class="dropbtn tab">Schedules</button>
         <div class="dropdown-content">
-          <a href="/taskmanager/schedules/">View Schedules</a>
+          <a href="#">View Schedules</a>
           <a href="#">Edit Schedules</a>
           <a href="#">Link 3</a>
         </div>

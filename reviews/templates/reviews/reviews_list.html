@@ -1,7 +1,11 @@
 {% extends 'dashboard/base.html' %}
-
+{% block title%}Evaluations{% endblock %}
+{% load static %}
+{% block styling %}
+<link rel="stylesheet" href="{% static 'reviews/css/reviewsList.css' %}" type="text/css" media="screen">
+{% endblock %}
 {% block content %}
-    <h2>Reviews</h2>
+<div class="content">
     <table>
         <tr>
             <th>ID</th>
@@ -12,8 +16,10 @@
             <th>Teamwork</th>
             <th>Initiative</th>
             <th>Customer Service</th>
-            <th>Performance</th>
+            <th>Quality</th>
+            <th>Productivity</th>
             <th>Average</th>
+            <th>Date</th>
         </tr>
         {% for review in object_list %}
         <tr>
@@ -24,10 +30,14 @@
             <td>{{ review.attire }}</td>
             <td>{{ review.teamwork }}</td>
             <td>{{ review.initiative }}</td>
-            <td>{{ review.customer_service }}</td>
-            <td>{{ review.performance }}</td>
-            <td><div id="review-avg"></div></td>
+            <td>{{ review.service }}</td>
+            <td>{{ review.quality }}</td>
+            <td>{{ review.productivity }}</td>
+            <td>--<div id="eval-avg"></div></td>
+            <td>{{ review.created_at }}</td>
+            
         </tr>
         {% endfor %}
     </table>
+</div>
 {% endblock %}
