@@ -1,0 +1,9 @@
+.content {
+    width: 400px;
+    margin: auto;
+    margin-top: 2rem;
+}
+p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

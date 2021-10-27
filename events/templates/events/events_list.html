@@ -1,0 +1,35 @@
+{% extends 'dashboard/base.html' %}
+{% block title%}Evaluations{% endblock %}
+{% load static %}
+{% block styling %}
+<!-- <link rel="stylesheet" href="{% static 'events/css/eventsList.css' %}" type="text/css" media="screen"> -->
+{% endblock %}
+{% block content %}
+<div class="content">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Attendance</th>
+            <th>Grooming</th>
+            <th>Punctuality</th>
+            <th>Attire</th>
+            <th>Teamwork</th>
+            <th>Initiative</th>
+            <th>Customer Service</th>
+            <th>Quality</th>
+            <th>Productivity</th>
+            <th>Average</th>
+            <th>Date</th>
+        </tr>
+        {% for event in object_list %}
+        <tr>
+            <td>{{ event.name }}</td>
+            <td>{{ event.description }}</td>
+            <td>{{ event.punctuality }}</td>
+            <td>{{ event.attire }}</td>
+            <td>{{ event.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

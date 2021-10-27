@@ -1,15 +1,33 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.db.models import fields
 from django.shortcuts import render, HttpResponse
 # from events.models import Events
 import datetime
 import calendar
 from django.utils.safestring import mark_safe
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic import ListView
+from django.urls import reverse_lazy
+from events.models import Events
 from .utils import EventCalendar
-
 # Depricated for EventsCalendar
 # from calendar import HTMLCalendar
 
+class EventListView(ListView):
+    model = Events
+class EventCreateView(CreateView):
+    model = Events
+    fields = '__all__'
+
+class EventUpdateView(UpdateView):
+    model = Events
+    fields = '__all__'
+
+class EventDeleteView(DeleteView):
+    model = Events
+    fields = '__all__'
+    success_url = reverse_lazy('event-form')
 
 def calendar_view(request, extra_context=None):
     after_day = request.GET.get('day__gte', None)

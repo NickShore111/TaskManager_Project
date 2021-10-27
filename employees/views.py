@@ -55,13 +55,13 @@ def delete(request, employeePK):
     return redirect("employees:index")
 
 def create(request):
-    employeeForm = EmployeeForm(request.POST)
-    context = {"employeeForm": employeeForm}
-
     if request.method == "GET":
         employeeForm = EmployeeForm()
+        context = {"employeeForm": employeeForm}
         return render(request, "employees/base_createEmployee.html", context)
     elif request.method == "POST":
+        employeeForm = EmployeeForm(request.POST)
+        context = {"employeeForm": employeeForm}
         if employeeForm.is_valid():
             employeeForm.save()
             messages.success(request, "New Employee Successfully Created")

@@ -3,31 +3,38 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from django.urls import reverse
 from employees.models import Employees
+from datetime import date
+from django.utils import timezone
+
+
 # Create your models here.
 
-
-class Events(models.Model):
-    title = models.CharField(max_length=45, blank=True, null=True)
-    notes = models.TextField('Event Notes', max_length=200, blank=True, null=True)
-    day = models.DateField(blank=True, null=True, help_text='Day of the event')
-    start_time = models.TimeField(blank=True, null=True, help_text='Starting time')
-    end_time = models.TimeField(blank=True, null=True, help_text='Final time')
-    created_by = models.CharField(max_length=45, blank=True, null=True)
-    created_for = models.CharField(max_length=45, blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True, auto_now_add=True)
-    updated_at = models.DateTimeField(blank=True, null=True, auto_now=True)
-
-    class Meta:
-        db_table = 'events'
-
-
 class EventsHasEmployees(models.Model):
-    event = models.OneToOneField(Events, models.DO_NOTHING, primary_key=True)
-    employee = models.ForeignKey(Employees, models.DO_NOTHING)
+    event = models.OneToOneField("Events", on_delete=models.DO_NOTHING, primary_key=True)
+    employee = models.ForeignKey(Employees, on_delete=models.DO_NOTHING)
 
     class Meta:
         db_table = 'events_has_employees'
         unique_together = (('event', 'employee'),)
+
+class Events(models.Model):
+    title = models.CharField(max_length=45)
+    notes = models.TextField(max_length=200, blank=True, null=True)
+    day = models.DateField()
+    start_time = models.TimeField(default=timezone.now)
+    end_time = models.TimeField(default=timezone.now)
+    assigned_by = models.ForeignKey(Employees, on_delete=models.DO_NOTHING, related_name='Event_assigned_by')
+    assigned_to = models.ManyToManyField(Employees, through="EventsHasEmployees")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'events'
+
+    def get_absolute_url(self):
+        return reverse('events:detail', kwargs={'pk': self.pk})
+
+
 
 # class Event(models.Model):
 #     title = models.CharField('Title', max_length=30)

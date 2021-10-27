@@ -14,16 +14,16 @@ class EmployeeForm(ModelForm):
         fields = "__all__"
         exclude = ["created_at"]
 
-    def clean_emp_num(self):
-        emp_num = self.cleaned_data.get("emp_num")
-        if len(emp_num) < 4:
+    def clean_login_num(self):
+        login_num = self.cleaned_data.get("login_num")
+        if len(login_num) < 4:
             raise ValidationError(_("Invalid ID Number."))
         else:
             try:
-                emp_num = int(emp_num)
+                login_num = int(login_num)
             except ValueError:
                 raise ValidationError(_("Invalid ID Number."))
-        return emp_num
+        return login_num
 
 
 class DepartmentForm(ModelForm):
