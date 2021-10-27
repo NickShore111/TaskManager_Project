@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.db.models import fields
-from django.shortcuts import render, HttpResponse
-# from events.models import Events
+from django.shortcuts import render, HttpResponse, redirect
 import datetime
 import calendar
 from django.utils.safestring import mark_safe
@@ -11,6 +9,7 @@ from django.views.generic import ListView
 from django.urls import reverse_lazy
 from events.models import Events
 from .utils import EventCalendar
+from events.forms import EventForm
 # Depricated for EventsCalendar
 # from calendar import HTMLCalendar
 
@@ -74,3 +73,5 @@ def calendar_view(request, extra_context=None):
     # print("Extra Content: ", extra_context)
 
     return render(request, 'events/base_calendar.html', extra_context)
+
+

@@ -18,7 +18,7 @@
   <body class="container">
     <section class="section-tabs">
       <div class="dropdown">
-        <button class="dropbtn tab">TaskManager</button>
+        <button class="dropbtn tab">Manage Tasks</button>
         <div class="dropdown-content">
           <a href="#">View Tasks</a>
           <a href="#">Edit Tasks</a>
@@ -47,7 +47,7 @@
         <div class="dropdown-content">
           <a href="{% url 'events:index' %}">View Calendar</a>
           <a href="{% url 'events:create' %}">Add Events</a>
-          <a href="#">Link 3</a>
+          <a href="{% url 'events:list' %}">View Events</a>
         </div>
       </div>
       <div class="dropdown">

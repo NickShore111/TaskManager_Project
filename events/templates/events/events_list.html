@@ -6,28 +6,22 @@
 {% endblock %}
 {% block content %}
 <div class="content">
+    <h2>Events List</h2>
     <table>
         <tr>
-            <th>ID</th>
-            <th>Attendance</th>
-            <th>Grooming</th>
-            <th>Punctuality</th>
-            <th>Attire</th>
-            <th>Teamwork</th>
-            <th>Initiative</th>
-            <th>Customer Service</th>
-            <th>Quality</th>
-            <th>Productivity</th>
-            <th>Average</th>
-            <th>Date</th>
+            <th>Title</th>
+            <th>Notes</th>
+            <th>Day</th>
+            <th>Start</th>
+            <th>End</th>
         </tr>
         {% for event in object_list %}
         <tr>
-            <td>{{ event.name }}</td>
-            <td>{{ event.description }}</td>
-            <td>{{ event.punctuality }}</td>
-            <td>{{ event.attire }}</td>
-            <td>{{ event.created_at }}</td>
+            <td>{{ event.title }}</td>
+            <td>{{ event.notes }}</td>
+            <td>{{ event.day }}</td>
+            <td>{{ event.start_time }}</td>
+            <td>{{ event.end_time }}</td>
         </tr>
         {% endfor %}
     </table>
