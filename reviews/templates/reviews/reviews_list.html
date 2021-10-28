@@ -40,4 +40,17 @@
         {% endfor %}
     </table>
 </div>
+    <div class="reviews_select">
+        <select name="employee" id="employeeSelect">
+            <option value="0">Select Employee</option>
+            {% for employee in employeeList %}
+                <option value="{{ employee.id }}">{{ employee.first_name }} {{ employee.last_name }}</option>
+            {% endfor %}
+        </select>
+        <label for="FromDate">From:</label>
+        <input type="input" name="from" id="datepickerFrom">
+        <label for="ToDate">To:</label>
+        <input type="input" name="to" id="datepickerTo">
+
+    </div>
 {% endblock %}

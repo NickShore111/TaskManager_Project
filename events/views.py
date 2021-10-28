@@ -18,10 +18,13 @@ class EventListView(ListView):
 class EventCreateView(CreateView):
     model = Events
     fields = '__all__'
+    success_url="/taskmanager/events/"
 
 class EventUpdateView(UpdateView):
     model = Events
     fields = '__all__'
+    template_name = 'events/events_update.html'
+
 
 class EventDeleteView(DeleteView):
     model = Events
@@ -59,9 +62,9 @@ def calendar_view(request, extra_context=None):
     next_month = datetime.date(
         year=next_month.year, month=next_month.month, day=1)
 
-    extra_context['previous_month'] = "/taskmaster/events/" + '?day__gte=' + str(
+    extra_context['previous_month'] = "/taskmanager/events/" + '?day__gte=' + str(
         previous_month)
-    extra_context['next_month'] = "/taskmaster/events/" + \
+    extra_context['next_month'] = "/taskmanager/events/" + \
         '?day__gte=' + str(next_month)
 
     cal = EventCalendar()

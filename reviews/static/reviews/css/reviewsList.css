@@ -1,8 +1,10 @@
 .content {
     max-height: 500px;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 table {
     margin: auto;
+}
+th {
+    margin: 5px;
 }

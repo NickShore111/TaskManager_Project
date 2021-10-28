@@ -9,31 +9,6 @@ from django.utils import timezone
 
 # Create your models here.
 
-# class EventsHasEmployees(models.Model):
-#     event = models.ForeignKey("Events", on_delete=models.DO_NOTHING)
-#     employee = models.ForeignKey(Employees, on_delete=models.DO_NOTHING)
-
-#     class Meta:
-#         db_table = 'events_has_employees'
-#         unique_together = (('event', 'employee'),)
-
-# class Events(models.Model):
-#     title = models.CharField(max_length=45)
-#     notes = models.TextField(max_length=200, blank=True, null=True)
-#     day = models.DateField()
-#     start_time = models.TimeField(default=timezone.now)
-#     end_time = models.TimeField(default=timezone.now)
-#     assigned_by = models.ForeignKey(Employees, on_delete=models.DO_NOTHING, related_name='Event_assigned_by')
-#     assigned_to = models.ManyToManyField(Employees, through="EventsHasEmployees")
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-
-#     class Meta:
-#         db_table = 'events'
-
-#     def get_absolute_url(self):
-#         return reverse('events:detail', kwargs={'pk': self.pk})
-
 class Events(models.Model):
     title = models.CharField(max_length=30)
     notes = models.TextField(
@@ -46,8 +21,8 @@ class Events(models.Model):
         verbose_name = 'Event'
         verbose_name_plural = 'Event'
 
-    def get_absolute_url(self):
-        return reverse('events:detail', kwargs={'pk': self.pk})
+    # def get_absolute_url(self):
+    #     return reverse('events:detail', kwargs={'pk': self.pk})
 
 
     def check_overlap(self, fixed_start, fixed_end, new_start, new_end):
@@ -61,9 +36,14 @@ class Events(models.Model):
 
         return overlap
 
+    # def get_absolute_url(self):
+    #     url = reverse('admin:%s_%s_change' % (
+    #         self._meta.app_label, self._meta.model_name), args=[self.id])
+    #     return u'<a href="%s">%s</a>' % (url, str(self.title))
+
     def get_absolute_url(self):
-        url = reverse('admin:%s_%s_change' % (
-            self._meta.app_label, self._meta.model_name), args=[self.id])
+        url = ('update/%s' % (
+            self.id))
         return u'<a href="%s">%s</a>' % (url, str(self.title))
 
     def clean(self):

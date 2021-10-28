@@ -19,4 +19,11 @@ $(function() {
         $(this).find("#avgScore").html(output);
     });
 
+    $("#datepickerFrom").datepicker({
+        dateFormat: "yy-mm-dd",
+        });
+    $("#datepickerTo").datepicker({
+        dateFormat: "yy-mm-dd",
+        });
+
 })
