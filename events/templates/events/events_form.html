@@ -7,14 +7,14 @@
 {% endblock %}
 {% block content %}
 {% if events.id %}
-<h2>Update Calendar Event</h2>
+<h3 class="section_title">Update Calendar Event</h3>
 {% else %}
-<h2>Create Calendar Event</h2>
+<h3 class="section_title">Create Calendar Event</h3>
 {% endif %}
 <div class="content">
-    <div class="form-container">
+    <div class="form">
         {% if events.id %}
-            <form class="eventForm" method="PUT">{% csrf_token %}
+            <form class="eventForm" method="POST" action="{% url 'events:change' events.id %}">{% csrf_token %}
                 {{ form.as_p }}
                 <button class="btn btn-success" type="submit">Update</button>
                 <a href="{% url 'events:delete' events.id %}" class="btn btn-warning">Delete</a>

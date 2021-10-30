@@ -17,17 +17,10 @@ class Tasks(models.Model):
     position = models.ForeignKey(Positions, models.DO_NOTHING, blank=True, null=True)
     name = models.CharField(max_length=45)
     description = models.CharField(max_length=200, blank=True, null=True)
+    time_allocation = models.PositiveIntegerField(help_text="Hours to complete")
     created_at = models.DateTimeField(blank=True, null=True, auto_now_add=True)
     updated_at = models.DateTimeField(blank=True, null=True, auto_now=True)
 
     class Meta:
         db_table = 'tasks'
 
-
-# class TasksHasPositions(models.Model):
-#     task = models.ForeignKey(Tasks, models.DO_NOTHING)
-#     position = models.ForeignKey(Positions, models.DO_NOTHING)
-
-#     class Meta:
-#         db_table = 'tasks_has_positions'
-#         unique_together = (('task', 'position'),)

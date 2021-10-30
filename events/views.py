@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.http.response import HttpResponseRedirect
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, redirect
 import datetime
 import calendar
 from django.utils.safestring import mark_safe
-from django.views.generic.edit import CreateView, DeleteView, UpdateView, FormView
+from django.views.generic.edit import CreateView, UpdateView, FormView
 from django.views.generic import ListView
-from django.urls import reverse_lazy
 from events.models import Events
 from .utils import EventCalendar
 from events.forms import EventForm
+from django.contrib import messages
+
 # Depricated for EventsCalendar
 # from calendar import HTMLCalendar
 
@@ -30,13 +30,43 @@ class EventCreateView(CreateView):
 class EventUpdateView(UpdateView):
     model = Events
     fields = '__all__'
-    # template_name = 'events/events_update.html'
-    # success_url="/taskmanager/list/"
 
-
-# class EventDeleteView(DeleteView):
-#     model = Events
-#     fields = '__all__'
+def update_event(request, pk):
+    event = Events.objects.get(pk=pk)
+    eventForm = EventForm(request.POST)
+    initialData = {
+        'title': event.title,
+        'notes': event.notes,
+        'day': event.day,
+        'start_time': event.start_time,
+        'end_time': event.end_time,
+    }
+    checkForChange = EventForm(request.POST, initial=initialData)
+    if eventForm.is_valid() and checkForChange.has_changed():
+        """
+        try:
+            eventForm.is_valid()
+        except ValidationError as e:
+            # Do something based on the errors contained in e.message_dict.
+            # Display them to a user, or handle them programmatically.
+        pass
+Model.clean_fields(exclude=None)¶
+This method will validate all fields on your model. The optional exclude argument 
+lets you provide a list of field names to exclude from validation. It will raise a
+ValidationError if any fields fail validation.
+        """
+        editEvent = EventForm(request.POST, instance=event)
+        editEvent.save()
+        messages.success(request, "Succesfully Updated Event")
+        return redirect("events:list")
+    elif not checkForChange.has_changed():
+        messages.error(request, "No Event Data Changed")
+        context = { "form": eventForm }
+        return render(request, 'events/events_form.html', context)
+    else:
+        messages.error(request, "New Event Details Not Valid")
+        context = { "form": eventForm }
+        return render(request, 'events/events_form.html', context)
 
 def delete_event(request, pk):
     e = Events.objects.get(pk=pk)
@@ -85,7 +115,6 @@ def calendar_view(request, extra_context=None):
     html_calendar = html_calendar.replace(
         '<td ', '<td  width="150" height="80" id="cal_cell"')
     extra_context['calendar'] = mark_safe(html_calendar)
-    # print("Extra Content: ", extra_context)
 
     return render(request, 'events/base_calendar.html', extra_context)
 

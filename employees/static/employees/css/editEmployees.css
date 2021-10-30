@@ -32,6 +32,9 @@ li {
 .errorlist {
   color: red;
 }
+.helptext {
+  display: block;
+}
 /* .button {
   font: bold 11px Arial;
   text-decoration: none;

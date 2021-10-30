@@ -44,6 +44,7 @@ class Positions(models.Model):
         db_table = 'positions'
 
 class Employees(models.Model):
+    position = models.ForeignKey('Positions', models.DO_NOTHING)
     login_num = models.CharField(        
         verbose_name="Employee #",
         max_length=4,
@@ -59,7 +60,6 @@ class Employees(models.Model):
     start_date = models.DateField()
     created_at = models.DateTimeField(blank=True, null=True, auto_now_add=True)
     updated_at = models.DateTimeField(blank=True, null=True, auto_now=True)
-    position = models.ForeignKey('Positions', models.DO_NOTHING)
 
     def __str__(self):
         return self.first_name + " " + self.last_name

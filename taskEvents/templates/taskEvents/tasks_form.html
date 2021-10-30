@@ -1,11 +1,11 @@
 {% extends 'dashboard/base.html' %}
-{% block title%}Reviews{% endblock %}
+{% block title%}Create Tasks{% endblock %}
 {% load static %}
 {% block styling %}
-<link rel="stylesheet" href="{% static 'reviews/css/base_reviews.css' %}" type="text/css" media="screen">
+<!-- <link rel="stylesheet" href="{% static 'reviews/css/base_reviews.css' %}" type="text/css" media="screen"> -->
 {% endblock %}
 {% block content %}
-<h3 class="section_title">Employee Evaluation</h3>
+<h3 class="section_title">Create Tasks</h3>
 <div class="content">
     <div class="form">
         <form method="POST">{% csrf_token %}

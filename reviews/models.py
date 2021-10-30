@@ -10,7 +10,6 @@ from datetime import date
 class Reviews(models.Model):
 
     class Rating(models.IntegerChoices):
-        NOT_APPLICABLE = 0
         UNACCEPTABLE = 1
         NEEDS_IMPROVEMENT = 2
         SATISFACTORY = 3

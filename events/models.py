@@ -21,10 +21,6 @@ class Events(models.Model):
         verbose_name = 'Event'
         verbose_name_plural = 'Event'
 
-    # def get_absolute_url(self):
-    #     return reverse('events:detail', kwargs={'pk': self.pk})
-
-
     def check_overlap(self, fixed_start, fixed_end, new_start, new_end):
         overlap = False
         if new_start == fixed_end or new_end == fixed_start:  # edge case
@@ -36,10 +32,6 @@ class Events(models.Model):
 
         return overlap
 
-    # def get_absolute_url(self):
-    #     url = reverse('admin:%s_%s_change' % (
-    #         self._meta.app_label, self._meta.model_name), args=[self.id])
-    #     return u'<a href="%s">%s</a>' % (url, str(self.title))
 
     def get_absolute_url(self):
         url = ('update/%s' % (
@@ -51,9 +43,10 @@ class Events(models.Model):
             raise ValidationError('Ending times must end after starting times')
 
         events = Events.objects.filter(day=self.day)
-        if events.exists():
-            for event in events:
-                if self.check_overlap(event.start_time, event.end_time, self.start_time, self.end_time):
-                    raise ValidationError(
-                        'There is an overlap with another event: ' + str(event.day) + ', ' + str(
-                            event.title) + ':' + str(event.start_time) + '-' + str(event.end_time))
+        """Could not prevent validation from preventing update"""
+        # if events.exists():
+            # for event in events:
+            #     if self.check_overlap(event.start_time, event.end_time, self.start_time, self.end_time):
+            #         raise ValidationError(
+            #             'There is an overlap with another event: ' + str(event.day) + ', ' + str(
+            #                 event.title) + ':' + str(event.start_time) + '-' + str(event.end_time))

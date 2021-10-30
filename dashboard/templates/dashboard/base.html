@@ -21,32 +21,30 @@
       <div class="dropdown">
         <button class="dropbtn tab">Manage Tasks</button>
         <div class="dropdown-content">
-          <a href="#">View Tasks</a>
-          <a href="#">Edit Tasks</a>
-          <a href="#">View Reminders</a>
-          <a href="#">Edit Reminders</a>
+          <a href="{% url 'taskEvents:create' %}">Create Tasks</a>
+          <a href="">View Tasks</a>
         </div>
       </div>
       <div class="dropdown">
         <button class="dropbtn tab">Employee Data</button>
         <div class="dropdown-content">
-          <a href="{% url 'employees:index' %}">View Employees</a>
-          <a href="{% url 'employees:create' %}">Create Employees</a>
+          <a href="{% url 'employees:form' %}">Create Employees</a>
+          <a href="{% url 'employees:list' %}">View Employees</a>
         </div>
       </div>
       <div class="dropdown">
         <button class="dropbtn tab">Staff Evaluations</button>
         <div class="dropdown-content">
-          <a href="{% url 'reviews:index' %}">See Reviews</a>
           <a href="{% url 'reviews:create' %}">Create Review</a>
+          <a href="{% url 'reviews:index' %}">See Reviews</a>
           <!-- <a href="{% url 'reviews:update' %}">Edit Reviews</a> -->
         </div>
       </div>
       <div class="dropdown">
         <button class="dropbtn tab">Calendar Events</button>
         <div class="dropdown-content">
-          <a href="{% url 'events:index' %}">View Calendar</a>
           <a href="{% url 'events:form' %}">Create Events</a>
+          <a href="{% url 'events:index' %}">View Calendar</a>
           <a href="{% url 'events:list' %}">List Events</a>
         </div>
       </div>

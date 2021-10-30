@@ -1,4 +1,4 @@
-{% extends 'dashboard/base.html' %} {% block title%}Employees{% endblock %}
+{% extends 'dashboard/base.html' %} {% block title%}Employee List{% endblock %}
 {%load static %} {% block styling %}
 <link
   rel="stylesheet"
@@ -23,7 +23,7 @@
       <th>Start Date</th>
       <th>Action</th>
     </thead>
-    {% for employee in employeeList %}
+    {% for employee in object_list %}
     <tr>
       <td>{{ employee.login_num }}</td>
       <td>{{ employee.username|capfirst }}</td>
