@@ -12,8 +12,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <title>{% block title %}TaskManager Home{% endblock %}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'dashboard/css/main.css' %}" type="text/css" media="screen"/>
     {% block styling %}{% endblock %}
+
+    <link rel="stylesheet" href="{% static 'dashboard/css/main.css' %}" type="text/css" media="screen"/>
   </head>
   <body class="container">
     <section class="section-tabs">
@@ -45,8 +46,8 @@
         <button class="dropbtn tab">Calendar Events</button>
         <div class="dropdown-content">
           <a href="{% url 'events:index' %}">View Calendar</a>
-          <a href="{% url 'events:create' %}">Add Events</a>
-          <a href="{% url 'events:list' %}">View Events</a>
+          <a href="{% url 'events:form' %}">Create Events</a>
+          <a href="{% url 'events:list' %}">List Events</a>
         </div>
       </div>
       <div class="dropdown">

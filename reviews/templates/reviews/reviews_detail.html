@@ -7,37 +7,37 @@
 {% endblock %}
 {% block content %}
 <div class="content">
-    <h1>{{ employee.first_name }} {{ employee.last_name }}'s Evaluations</h1>
+    <h2>{{ employee.first_name }} {{ employee.last_name }}'s Evaluations</h2>
     <table>
         <tr>
-            <th>Attendance</th>
-            <th>Grooming</th>
-            <th>Punctuality</th>
-            <th>Attire</th>
-            <th>Teamwork</th>
-            <th>Initiative</th>
-            <th>Customer Service</th>
-            <th>Quality</th>
-            <th>Productivity</th>
+            {% for field in fields.keys %}
+                <th>{{ field | title }}</th>
+            {% endfor %}
             <th>Average</th>
             <th>Date</th>
         </tr>
         {% for review in object_list %}
-        <tr class="reviewScore-row">
-            <td class="score">{{ review.attendance }}</td>
-            <td class="score">{{ review.grooming }}</td>
-            <td class="score">{{ review.punctuality }}</td>
-            <td class="score">{{ review.attire }}</td>
-            <td class="score">{{ review.teamwork }}</td>
-            <td class="score">{{ review.initiative }}</td>
-            <td class="score">{{ review.service }}</td>
-            <td class="score">{{ review.quality }}</td>
-            <td class="score">{{ review.productivity }}</td>
-            <td><div id="avgScore"></div></td>
-            <td>{{ review.created_at }}</td>
-            
-        </tr>
+            <tr class="reviewScore-row">
+                <td class="score">{{ review.attendance }}</td>
+                <td class="score">{{ review.grooming }}</td>
+                <td class="score">{{ review.punctuality }}</td>
+                <td class="score">{{ review.attire }}</td>
+                <td class="score">{{ review.teamwork }}</td>
+                <td class="score">{{ review.initiative }}</td>
+                <td class="score">{{ review.service }}</td>
+                <td class="score">{{ review.quality }}</td>
+                <td class="score">{{ review.productivity }}</td>
+                <td><div id="avgScore"></div></td>
+                <td>{{ review.created_at }}</td>
+            </tr>
         {% endfor %}
+            <tr id=avgRow>
+                {% for value in avg.values %}
+                    <td class="avgScore">{{ value }}</td>
+                {% endfor %}
+                <td>Averages</td>
+            </tr>
     </table>
 </div>
+{% include "reviews/review_footer.html" %}
 {% endblock %}

@@ -2,15 +2,34 @@
   /* normalizations */
   vertical-align: baseline;
   font-size: 100%;
-  border: 0 none;
+  /* border: 0 none; */
   outline: 0;
   padding: 0;
   margin: 0;
 }
+table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+}
+th {
+  font-size: large;
+  border-bottom: 1px solid black;
+}
+td,th {
+  border: 1px solid black;
+  padding: 3px;
+}
+td {
+  font-size:medium;
+}
 * {
-  border: 1px grey dashed;
+  /* border: 1px grey dashed; */
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   text-align: center;
+}
+section, .day {
+  border: 1px solid black;
 }
 .container {
   width: auto;
@@ -29,6 +48,8 @@
   display: flex;
   grid-area: section;
   justify-content: space-evenly;
+  background-color: silver;
+  border-bottom: 2px solid black;
 }
 /* .tab {
   flex: auto;
@@ -109,7 +130,9 @@ main {
 .btn-secondary {
   background-color: steelblue;
 }
-
+h2 {
+  font-size: larger;
+}
 
 /* Dropdown Button */
 .dropbtn {
@@ -153,4 +176,4 @@ main {
 .dropdown:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown:hover .dropbtn {background-color: #4ab8f8;}

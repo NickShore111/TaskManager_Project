@@ -1,10 +1,16 @@
 .content {
-    max-height: 500px;
+    height: 500px;
     overflow-y: auto;
+    border: 1px solid black;
 }
 table {
-    margin: auto;
+    width: 100%;
 }
-th {
-    margin: 5px;
+
+#select-review {
+    border-top: 1px solid black;
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }

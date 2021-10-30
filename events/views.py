@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse, redirect
 import datetime
 import calendar
 from django.utils.safestring import mark_safe
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView, FormView
 from django.views.generic import ListView
 from django.urls import reverse_lazy
 from events.models import Events
@@ -15,21 +16,32 @@ from events.forms import EventForm
 
 class EventListView(ListView):
     model = Events
+
+class EventFormView(FormView):
+    form_class = EventForm
+    template_name = 'events/events_form.html'
+    success_url = '/taskmanager/events/'
+
 class EventCreateView(CreateView):
     model = Events
     fields = '__all__'
-    success_url="/taskmanager/events/"
+    success_url="/taskmanager/events/list/"
 
 class EventUpdateView(UpdateView):
     model = Events
     fields = '__all__'
-    template_name = 'events/events_update.html'
+    # template_name = 'events/events_update.html'
+    # success_url="/taskmanager/list/"
 
 
-class EventDeleteView(DeleteView):
-    model = Events
-    fields = '__all__'
-    success_url = reverse_lazy('event-form')
+# class EventDeleteView(DeleteView):
+#     model = Events
+#     fields = '__all__'
+
+def delete_event(request, pk):
+    e = Events.objects.get(pk=pk)
+    e.delete()
+    return redirect("events:list")
 
 def calendar_view(request, extra_context=None):
     after_day = request.GET.get('day__gte', None)

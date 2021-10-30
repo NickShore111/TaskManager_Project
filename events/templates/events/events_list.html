@@ -1,12 +1,13 @@
 {% extends 'dashboard/base.html' %}
-{% block title%}Evaluations{% endblock %}
+{% block title%}Event View{% endblock %}
 {% load static %}
 {% block styling %}
-<!-- <link rel="stylesheet" href="{% static 'events/css/eventsList.css' %}" type="text/css" media="screen"> -->
+<link rel="stylesheet" href="{% static 'events/css/eventsList.css' %}" type="text/css" media="screen">
 {% endblock %}
 {% block content %}
+<h2>Events List</h2>
 <div class="content">
-    <h2>Events List</h2>
+    {% if object_list %}
     <table>
         <tr>
             <th>Title</th>
@@ -14,6 +15,7 @@
             <th>Day</th>
             <th>Start</th>
             <th>End</th>
+            <th>Actions</th>
         </tr>
         {% for event in object_list %}
         <tr>
@@ -22,8 +24,15 @@
             <td>{{ event.day }}</td>
             <td>{{ event.start_time }}</td>
             <td>{{ event.end_time }}</td>
+            <td><a href="{% url 'events:update' event.id %}">Update</a>&nbsp|&nbsp
+                <a href="{% url 'events:delete' event.id %}">Delete</a></td>
+        </tr>
         </tr>
         {% endfor %}
     </table>
+    {% else %}
+        <h1>No Events to View</h1>
+        <a href="{% url 'events:create' %}" class="btn btn-primary">Create An Event</a>
+    {% endif %}
 </div>
 {% endblock %}

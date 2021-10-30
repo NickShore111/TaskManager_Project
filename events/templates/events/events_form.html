@@ -6,13 +6,26 @@
 <script src="{% static 'events/js/eventsList.js' %}" type="text/javascript"></script>
 {% endblock %}
 {% block content %}
+{% if events.id %}
+<h2>Update Calendar Event</h2>
+{% else %}
+<h2>Create Calendar Event</h2>
+{% endif %}
 <div class="content">
     <div class="form-container">
-        <h3 class="box_title">Create Calendar Event</h3>
-        <form class="eventForm" method="POST">{% csrf_token %}
-            {{ form.as_p }}
-            <input class="btn btn-success" type="submit" value="Create">
-        </form>
+        {% if events.id %}
+            <form class="eventForm" method="PUT">{% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-success" type="submit">Update</button>
+                <a href="{% url 'events:delete' events.id %}" class="btn btn-warning">Delete</a>
+                </form>
+            </form>
+        {% else %}
+            <form class="eventForm" action="{% url 'events:create' %}" method="POST">{% csrf_token %}
+                {{ form.as_p }}
+                <input class="btn btn-success" type="submit" value="Create">
+            </form>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

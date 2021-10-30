@@ -24,6 +24,13 @@ $(function() {
         });
     $("#datepickerTo").datepicker({
         dateFormat: "yy-mm-dd",
+        defaultDate: 0,
         });
+
+    
+    $('#select-review').children().change(function() {
+        console.log("review selection changed")
+        $('#select-review').submit()
+    })
 
 })

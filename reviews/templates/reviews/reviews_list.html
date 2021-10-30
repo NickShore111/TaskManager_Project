@@ -16,41 +16,31 @@
             <th>Attire</th>
             <th>Teamwork</th>
             <th>Initiative</th>
-            <th>Customer Service</th>
+            <th>Service</th>
             <th>Quality</th>
             <th>Productivity</th>
             <th>Average</th>
             <th>Date</th>
         </tr>
         {% for review in object_list %}
-        <tr class="reviewScore-row">
-            <td>{{ review.employee_id }}</td>
-            <td class="score">{{ review.attendance }}</td>
-            <td class="score">{{ review.grooming }}</td>
-            <td class="score">{{ review.punctuality }}</td>
-            <td class="score">{{ review.attire }}</td>
-            <td class="score">{{ review.teamwork }}</td>
-            <td class="score">{{ review.initiative }}</td>
-            <td class="score">{{ review.service }}</td>
-            <td class="score">{{ review.quality }}</td>
-            <td class="score">{{ review.productivity }}</td>
-            <td><div id="avgScore"></div></td>
-            <td>{{ review.created_at }}</td>
-        </tr>
+            <tr class="reviewScore-row">
+                <td><a href="{% url 'reviews:detail' review.employee.id %}"> 
+                    {{ review.employee.first_name }} {{ review.employee.last_name }}
+                </a></td>
+                <td class="score">{{ review.attendance }}</td>
+                <td class="score">{{ review.grooming }}</td>
+                <td class="score">{{ review.punctuality }}</td>
+                <td class="score">{{ review.attire }}</td>
+                <td class="score">{{ review.teamwork }}</td>
+                <td class="score">{{ review.initiative }}</td>
+                <td class="score">{{ review.service }}</td>
+                <td class="score">{{ review.quality }}</td>
+                <td class="score">{{ review.productivity }}</td>
+                <td><div id="avgScore"></div></td>
+                <td>{{ review.created_at }}</td>
+            </tr>
         {% endfor %}
     </table>
 </div>
-    <div class="reviews_select">
-        <select name="employee" id="employeeSelect">
-            <option value="0">Select Employee</option>
-            {% for employee in employeeList %}
-                <option value="{{ employee.id }}">{{ employee.first_name }} {{ employee.last_name }}</option>
-            {% endfor %}
-        </select>
-        <label for="FromDate">From:</label>
-        <input type="input" name="from" id="datepickerFrom">
-        <label for="ToDate">To:</label>
-        <input type="input" name="to" id="datepickerTo">
-
-    </div>
+{% include "reviews/review_footer.html" %}
 {% endblock %}
