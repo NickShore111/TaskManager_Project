@@ -13,7 +13,7 @@
     <title>{% block title %}TaskManager Home{% endblock %}</title>
     {% load static %}
     {% block styling %}{% endblock %}
-
+    <!-- <script src="{% static 'dashboard/js/main.js' %}" type="text/javascript"></script> -->
     <link rel="stylesheet" href="{% static 'dashboard/css/main.css' %}" type="text/css" media="screen"/>
   </head>
   <body class="container">
@@ -22,7 +22,7 @@
         <button class="dropbtn tab">Manage Tasks</button>
         <div class="dropdown-content">
           <a href="{% url 'taskEvents:create' %}">Create Tasks</a>
-          <a href="">View Tasks</a>
+          <a href="{% url 'taskEvents:list' %}">View Tasks</a>
         </div>
       </div>
       <div class="dropdown">

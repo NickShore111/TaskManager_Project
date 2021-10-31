@@ -1,5 +1,5 @@
-<div class="review-footer">
-    <form id="select-review" method="POST" action="{% url 'reviews:select' %}">{% csrf_token %}
+<div class="table-footer">
+    <form id="review-select-form" method="POST" action="{% url 'reviews:select' %}">{% csrf_token %}
         <select name="position" id="positionSelect">
             <option value="">Select Position</option>
             {% for position in positionList %}

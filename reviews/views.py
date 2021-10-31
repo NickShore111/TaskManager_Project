@@ -32,24 +32,19 @@ class ReviewDeleteView(DeleteView):
     success_url = reverse_lazy('review-form')
     
 def review_select(request):
-    employeeList = Employees.objects.all()
-    positionList = Positions.objects.all()
-    results = Reviews.objects.select_related('employee')
+    results = Reviews.objects.all()
 
     if request.method == "POST":
-        print("INSIDE REVIEW_SELECT")
         if request.POST['position']:
-            print("POSITION: ", request.POST['position'])
             results = Reviews.objects.filter(employee__position_id=request.POST['position'])
 
         if request.POST['employee']:
-            print("EMPLOYEE: ", request.POST['employee'])
             results = Reviews.objects.filter(employee_id = request.POST['employee'])
 
     context = {
         "object_list": results,
-        'employeeList': employeeList,
-        'positionList': positionList,
+        'employeeList': Employees.objects.all(),
+        'positionList': Positions.objects.all(),
     }
     return render(request, "reviews/reviews_list.html", context)
 

@@ -1,0 +1,48 @@
+{% extends 'dashboard/base.html' %}
+{% block title%}Task List{% endblock %}
+{% load static %}
+{% block styling %}
+<script src="{% static 'taskEvents/js/tasks_list.js' %}" type="text/javascript"></script>
+{% endblock %}
+{% block content %}
+<div class="content">
+    <table id="tasks-table">
+        <thead>
+            <th>Position</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Frequency</th>
+            <th>Time Allotment</th>
+            <th>Actions</th>
+        </thead>
+        {% for task in object_list %}
+            <tr>
+                <td>{{ task.position }}</td>
+                <td>{{ task.name }}</td>
+                <td>{{ task.description }}</td>
+                <td>{{ task.frequency }}</td>
+                <td>{{ task.time_allocation }}</td>
+                <td><a href="{% url 'tasks:update' task.id %}">Update</a>&nbsp|&nbsp
+                    <a href="{% url 'tasks:delete' task.id %}">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+<div class="table-footer">
+    <form id="task-select-form" method="POST" action="{% url 'tasks:select' %}">{% csrf_token %}
+        <select name="position" id="positionSelect">
+            <option value="">Select Position</option>
+            {% for position in positions %}
+                <option value="{{ position.id }}">{{ position.title }}</option>
+            {% endfor %}
+        </select>
+        <a href="{% url 'tasks:list' %}" class="btn btn-primary" style="margin: 0px;">View All</a>
+        <select name="frequency" id="employeeSelect">
+            <option value="">Select Frequency</option>
+            {% for key, value in frequencies.items %}
+                <option value="{{ key }}">{{ value }}</option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
+{% endblock %}

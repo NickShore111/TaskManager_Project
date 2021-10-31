@@ -2,11 +2,11 @@
 {% block title%}View Employee{% endblock %}
 {% load static %}
 {% block styling %}
-<link rel="stylesheet" href="{% static 'employees/css/editEmployees.css' %}" type="text/css" media="screen">
-<script src="{% static 'employees/js/editEmployees.js' %}" type="text/javascript"></script>
+<link rel="stylesheet" href="{% static 'employees/css/employees_form.css' %}" type="text/css" media="screen">
+<script src="{% static 'employees/js/employees_form.js' %}" type="text/javascript"></script>
 {% endblock %}
 {% block content %}
-<h3 class="box_title">Create New Employee</h3>
+<h3 class="section_title">Create New Employee</h3>
 <div class="content">
     <div class="newForm">
         <form action="{% url 'employees:create' %}" method="POST">

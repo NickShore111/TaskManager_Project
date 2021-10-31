@@ -2,13 +2,13 @@
 {% block title%}Evaluations{% endblock %}
 {% load static %}
 {% block styling %}
-<link rel="stylesheet" href="{% static 'reviews/css/reviewsList.css' %}" type="text/css" media="screen">
-<script src="{% static 'reviews/js/reviewsList.js' %}" type="text/javascript"></script>
+<link rel="stylesheet" href="{% static 'reviews/css/reviews_list.css' %}" type="text/css" media="screen">
+<script src="{% static 'reviews/js/reviews_list.js' %}" type="text/javascript"></script>
 {% endblock %}
 {% block content %}
 <div class="content">
-    <table>
-        <tr>
+    <table id="reviews-table">
+        <thead>
             <th>ID</th>
             <th>Attendance</th>
             <th>Grooming</th>
@@ -21,7 +21,7 @@
             <th>Productivity</th>
             <th>Average</th>
             <th>Date</th>
-        </tr>
+        </thead>
         {% for review in object_list %}
             <tr class="reviewScore-row">
                 <td><a href="{% url 'reviews:detail' review.employee.id %}"> 

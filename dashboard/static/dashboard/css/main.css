@@ -5,11 +5,32 @@
   outline: 0;
   padding: 0;
   margin: 0;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-align: center;
+}
+.content {
+  width: auto;
+  height: 550px;
+  margin: auto;
+  overflow-y: scroll;
+  border: 1px solid black;
+}
+/* Table elements across all sections */
+
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  height: 20px;
+  border-bottom: 2px black solid;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 table {
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   border-collapse: collapse;
+  width: 100%;
 }
 th {
   font-size: large;
@@ -22,9 +43,11 @@ td,th {
 td {
   font-size:medium;
 }
-* {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  text-align: center;
+/* End Table Styling */
+.table-footer {
+  border-top: 1px solid black;
+  height: 40px;
+  
 }
 section, .day {
   border: 1px solid black;
@@ -70,6 +93,7 @@ section, .day {
 main {
   grid-area: main;
   min-height: 550px;
+  max-height: 600px
 }
 .task-list {
   grid-area: tasks;
@@ -129,13 +153,13 @@ h2 {
 h3 {
   font-size: x-large;
 }
-
-/* Form template styling */
-.content {
-  display: flex;
+.helptext {
+  display: block;
+  font-size: 8pt;
 }
+/* Form template styling */
+
 .form {
-  /* width: 400px; */
   margin: auto;
   margin-top: 2rem;
 }

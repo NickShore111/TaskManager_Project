@@ -5,18 +5,18 @@
 <link rel="stylesheet" href="{% static 'events/css/eventsList.css' %}" type="text/css" media="screen">
 {% endblock %}
 {% block content %}
-<h2>Events List</h2>
+<h3 class="section_title">Events List</h3> 
 <div class="content">
     {% if object_list %}
-    <table>
-        <tr>
+    <table id="events-table">
+        <thead>
             <th>Title</th>
             <th>Notes</th>
             <th>Day</th>
             <th>Start</th>
             <th>End</th>
             <th>Actions</th>
-        </tr>
+        </thead>
         {% for event in object_list %}
         <tr>
             <td>{{ event.title }}</td>
@@ -26,7 +26,6 @@
             <td>{{ event.end_time }}</td>
             <td><a href="{% url 'events:update' event.id %}">Update</a>&nbsp|&nbsp
                 <a href="{% url 'events:delete' event.id %}">Delete</a></td>
-        </tr>
         </tr>
         {% endfor %}
     </table>

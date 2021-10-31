@@ -18,19 +18,9 @@ $(function() {
         let output = round(avgScore);
         $(this).find("#avgScore").html(output);
     });
-
-    $("#datepickerFrom").datepicker({
-        dateFormat: "yy-mm-dd",
-        });
-    $("#datepickerTo").datepicker({
-        dateFormat: "yy-mm-dd",
-        defaultDate: 0,
-        });
-
     
-    $('#select-review').children().change(function() {
-        console.log("review selection changed")
-        $('#select-review').submit()
+    $('#review-select-form').children().change(function() {
+        $('#review-select-form').submit()
     })
 
 })
