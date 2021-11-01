@@ -1,0 +1,19 @@
+<div class="table-footer">
+    <form id="shift-create-form" method="POST" action="{% url 'schedules:index' %}">{% csrf_token %}
+        <select name="position" id="positionSelect">
+            <option value="">Select Position</option>
+            {% for position in positionList %}
+                <option value="{{ position.id }}">{{ position.title }}</option>
+            {% endfor %}
+        </select>
+        <a href="{% url 'reviews:index' %}" class="btn btn-primary" style="margin: 0px;">View All</a>
+        <select name="employee" id="employeeSelect">
+            <option value="">Select Employee</option>
+            {% for employee in employeeList %}
+                <option value="{{ employee.id }}">{{ employee.first_name }} {{ employee.last_name }}</option>
+            {% endfor %}
+        </select>
+        <input class="btn btn-success" type="submit" value="Create">
+
+    </form>
+</div>

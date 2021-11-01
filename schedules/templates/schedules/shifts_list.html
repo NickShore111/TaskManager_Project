@@ -1,0 +1,34 @@
+{% extends 'dashboard/base.html' %}
+{% block title%}Schedule View{% endblock %}
+{% load static %}
+{% block styling %}
+{% endblock %}
+{% block content %}
+<h3 class="section_title">Schedules List</h3> 
+<div class="content">
+    {% if object_list %}
+    <table id="schedules-table">
+        <thead>
+            <th>Day</th>
+            <th>Position</th>
+            <th>In</th>
+            <th>Out</th>
+            <th>Actions</th>
+        </thead>
+        {% for shift in object_list %}
+        <tr>
+            <td>{{ shift.day_of_week }}</td>
+            <td>{{ shift.position }}</td>
+            <td>{{ shift.in_time }}</td>
+            <td>{{ shift.out_time }}</td>
+            <td><a href="{% url 'schedules:update' shift.id %}">Update</a>&nbsp|&nbsp
+                <a href="{% url 'schedules:delete' shift.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <h1>Create Schedules to View</h1>
+        <a href="{% url 'schedules:create' %}" class="btn btn-primary">Create Schedule</a>
+    {% endif %}
+</div>
+{% endblock %}

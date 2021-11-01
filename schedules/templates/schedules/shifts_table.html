@@ -1,0 +1,23 @@
+<h3 class="section_title">Schedules List</h3> 
+<div class="shifts-table-content">
+    <table id="schedules-table">
+        <thead>
+            <th>Day</th>
+            <th>Position</th>
+            <th>In</th>
+            <th>Out</th>
+            <th>Actions</th>
+        </thead>
+        {% for shift in shifts %}
+        <tr>
+            <td>{{ shift.day_of_week }}</td>
+            <td>{{ shift.position }}</td>
+            <td>{{ shift.in_time }}</td>
+            <td>{{ shift.out_time }}</td>
+            <td><a href="{% url 'schedules:update' shift.id %}">Update</a>&nbsp|&nbsp
+                <a href="{% url 'schedules:delete' shift.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+

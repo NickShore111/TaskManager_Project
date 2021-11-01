@@ -1,0 +1,25 @@
+{% extends 'dashboard/base.html' %}
+{% block title%}Schedules{% endblock %}
+{% load static %}
+{% block styling %}
+{% endblock %}
+{% block content %}
+{% include "schedules/shifts_table.html" %}
+<div class="shifts-create-footer">
+    <div class="form">
+        {% if shifts.id %}
+            <form class="eventForm" method="POST" action="{% url 'schedules:update' shifts.id %}">{% csrf_token %}
+                {{ form.as_table }}
+                <button class="btn btn-success" type="submit">Update</button>
+                <a href="{% url 'schedules:delete' shifts.id %}" class="btn btn-warning">Delete</a>
+                </form>
+            </form>
+        {% else %}
+            <form class="shiftForm" action="{% url 'schedules:create' %}" method="POST">{% csrf_token %}
+                {{ form.as_table }}
+                <input class="btn btn-success" type="submit" value="Create">
+            </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

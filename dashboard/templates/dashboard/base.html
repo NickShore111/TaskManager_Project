@@ -51,9 +51,8 @@
       <div class="dropdown">
         <button class="dropbtn tab">Schedules</button>
         <div class="dropdown-content">
-          <a href="#">View Schedules</a>
-          <a href="#">Edit Schedules</a>
-          <a href="#">Link 3</a>
+          <a href="{% url 'schedules:create' %}">Create Schedules</a>
+          <a href="{% url 'schedules:list' %}">View Schedules</a>
         </div>
       </div>
     </section>

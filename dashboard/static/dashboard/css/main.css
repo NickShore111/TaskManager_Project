@@ -15,6 +15,9 @@
   overflow-y: scroll;
   border: 1px solid black;
 }
+.shifts-table-content {
+  height: 440px;
+}
 /* Table elements across all sections */
 
 thead th {
