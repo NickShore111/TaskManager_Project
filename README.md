@@ -1,6 +1,6 @@
 # WebApp Manager Portal:
  - Employee Records Keeping
- - Staff Evaluation Production
+ - Staff Evaluations
  - Event Tracking
  - Task Assignment and Delegation
  
