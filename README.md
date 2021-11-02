@@ -5,6 +5,7 @@
  - Task Assignment and Delegation
 
 mySQL Backend:
+
 ![mySQL ERD](images/mySQL_ERD.png)
 
 Integrated Calendar view based on modified HTML Calendar:
