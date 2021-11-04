@@ -217,3 +217,13 @@ p {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #4ab8f8;}
+
+.schedule-select-footer {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5px;
+  border-top: 1px solid black;
+}
+.shifts-content {
+  height: 500px;
+}

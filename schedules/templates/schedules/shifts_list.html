@@ -4,9 +4,7 @@
 {% block styling %}
 {% endblock %}
 {% block content %}
-<h3 class="section_title">Schedules List</h3> 
-<div class="content">
-    {% if object_list %}
+<div class="shifts-content">
     <table id="schedules-table">
         <thead>
             <th>Day</th>
@@ -26,9 +24,6 @@
         </tr>
         {% endfor %}
     </table>
-    {% else %}
-        <h1>Create Schedules to View</h1>
-        <a href="{% url 'schedules:create' %}" class="btn btn-primary">Create Schedule</a>
-    {% endif %}
 </div>
+{% include "schedules/schedule_selector.html" %}
 {% endblock %}

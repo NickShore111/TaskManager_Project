@@ -1,0 +1,20 @@
+<div class="schedule-select-footer">
+    <span>
+        <form action="{% url 'schedules:select' %}" method="GET">{% csrf_token %}
+            <select name="date">
+                {% for date in schedules %}
+                    <option value="{{ date.id }}">{{ date.date }}</option>
+                {% endfor %}
+            </select>
+        <button type="submit">Select</button>
+        <h4>Select a date to edit schedule for</h4>
+        </form>
+    </span>
+    <span>
+        <form action="{% url 'schedules:create-schedule' %}" method="POST">{% csrf_token %}
+            {{ scheduleForm.as_table }}
+            <button type="submit">Create</button>
+        <h4>Or add a date to create schedule for</h4>
+        </form>
+    </span>
+</div>

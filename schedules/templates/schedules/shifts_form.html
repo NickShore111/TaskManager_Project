@@ -6,17 +6,25 @@
 {% block content %}
 {% include "schedules/shifts_table.html" %}
 <div class="shifts-create-footer">
+    <div>
+        <h4>1: Select which date to create schedule for</h4>
+        <form action="{% url 'schedules:create-schedule' %}">{% csrf_token %}
+            {{ scheduleForm.as_table}}
+            <button type="submit">Select</button>
+        </form>
+
+    </div>
     <div class="form">
         {% if shifts.id %}
             <form class="eventForm" method="POST" action="{% url 'schedules:update' shifts.id %}">{% csrf_token %}
-                {{ form.as_table }}
+                {{ shiftsForm.as_table }}
                 <button class="btn btn-success" type="submit">Update</button>
                 <a href="{% url 'schedules:delete' shifts.id %}" class="btn btn-warning">Delete</a>
                 </form>
             </form>
         {% else %}
             <form class="shiftForm" action="{% url 'schedules:create' %}" method="POST">{% csrf_token %}
-                {{ form.as_table }}
+                {{ shiftsForm.as_table }}
                 <input class="btn btn-success" type="submit" value="Create">
             </form>
         {% endif %}
