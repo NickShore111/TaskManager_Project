@@ -1,8 +1,8 @@
 <div class="schedule-select-footer">
     <span>
-        <form action="{% url 'schedules:select' %}" method="GET">{% csrf_token %}
             <select name="date">
                 {% for date in schedules %}
+                <form action="{% url 'schedules:select-schedule' date.id %}" method="GET">{% csrf_token %}
                     <option value="{{ date.id }}">{{ date.date }}</option>
                 {% endfor %}
             </select>
