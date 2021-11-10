@@ -58,6 +58,7 @@ class Employees(models.Model):
     email = models.EmailField(max_length=45)
     phone = models.CharField(max_length=45)
     start_date = models.DateField()
+    status = models.BooleanField(help_text='Check if active', default=True, blank=False, null=False)
     created_at = models.DateTimeField(blank=True, null=True, auto_now_add=True)
     updated_at = models.DateTimeField(blank=True, null=True, auto_now=True)
 

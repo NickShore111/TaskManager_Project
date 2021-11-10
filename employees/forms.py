@@ -12,7 +12,6 @@ class EmployeeForm(ModelForm):
     class Meta:
         model = Employees
         fields = "__all__"
-        exclude = ["created_at"]
 
     def clean_login_num(self):
         login_num = self.cleaned_data.get("login_num")

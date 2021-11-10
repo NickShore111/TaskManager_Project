@@ -9,8 +9,7 @@
 <h3 class="section_title">Create New Employee</h3>
 <div class="content">
     <div class="newForm">
-        <form action="{% url 'employees:create' %}" method="POST">
-            {% csrf_token %}
+        <form action="{% url 'employees:create' %}" method="POST">{% csrf_token %}
             {{ form.as_p }}
             <button type="submit" class="btn btn-primary">Create</button>
         </form>
