@@ -6,7 +6,7 @@ Build a Web based dashboard application providing the following services:
  - Calendar Event Tracking and Review
  - Task Assignment Creation and Delegation
  
-![Calendar View](images/CalendarView.png)
+![Calendar View](images/calendarView.png)
 
 ![Dashboard](images/dashboard.png)
 
