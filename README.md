@@ -17,7 +17,7 @@ Knowledge base of the following technologies utilized and developed upon:
 
 ## Implement a calendar for event viewing and reference 
 ![Calendar View](images/calendarView.png)
-Calendar code provided by ![Alexandre Pinto](https://alexpnt.github.io/2017/07/15/django-calendar/)
+Calendar code provided by [Alexandre Pinto](https://alexpnt.github.io/2017/07/15/django-calendar/)
 ## Landing page for dashboard user
 ![Dashboard](images/dashboard.png)
 ## List of events for review and edit
